@@ -23,8 +23,8 @@ const Login = () => {
   const { login, url , getidUser} = useAuth();
 
 
-  const [mail, setEmail] = useState("");
-  const [mdp, setPassword] = useState("");
+  const [mail, setEmail] = useState("admin@gmail.com");
+  const [mdp, setPassword] = useState("admin");
   const [rememberMe, setRememberMe] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
