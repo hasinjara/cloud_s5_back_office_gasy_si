@@ -4,4 +4,8 @@ package-lock.json
 .eslintcache
 /Documentation
 webservice.txt
-/ViewMe
+/ViewM/build
+/node_modules
+package-lock.json
+.eslintcache
+/Documentation
