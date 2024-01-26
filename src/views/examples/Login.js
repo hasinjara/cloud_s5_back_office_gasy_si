@@ -76,7 +76,7 @@ const Login = () => {
               <Button
                 className="btn-neutral btn-icon"
                 color="default"
-                href="https://github.com/Hasinjara/web_back_office_s5_cloud-main"
+                href="https://github.com/hasinjara/cloud_s5_back_office_gasy_si"
                 // onClick={(e) => e.preventDefault()}
               >
                 <span className="btn-inner--icon">
@@ -93,8 +93,8 @@ const Login = () => {
               <Button
                 className="btn-neutral btn-icon"
                 color="default"
-                href="#pablo"
-                onClick={(e) => e.preventDefault()}
+                href="https://www.google.com/search?channel=fs&client=ubuntu-sn&q=type+de+bo%C3%AEte+de+vitesse"
+                // onClick={(e) => e.preventDefault()}
               >
                 <span className="btn-inner--icon">
                   <img
