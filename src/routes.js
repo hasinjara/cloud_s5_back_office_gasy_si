@@ -6,6 +6,12 @@ import Login from "views/examples/Login.js";
 import Tables from "views/examples/Tables.js";
 import Icons from "views/examples/Icons.js";
 import ActiveCrud from "./components/ActiveCrud/ActiveCrud";
+import MarqueCrud from "./components/MarqueCrud/MarqueCrud";
+import CategorieCrud from "./components/CategorieCrud/CategorieCrud";
+import BoiteCrud from "./components/BoiteCrud/BoiteCrud";
+import EnergieCrud from "./components/EnergieCrud/EnergieCrud";
+import VoitureCrud from "./components/VoitureCrud/VoitureCrud";
+import FicheCrud from "./components/FicheCrud/FicheCrud";
 
 var routes = [
   {
@@ -37,45 +43,45 @@ var routes = [
     layout: "/admin",
   },
   {
-    path: "/tables",
+    path: "/Marque",
     name: "Marque",
     icon: "ni ni-bullet-list-67 text-red",
-    component: <Tables />,
+    component: <MarqueCrud />,
     layout: "/admin",
   },
   {
-    path: "/tables",
+    path: "/Categorie",
     name: "Categorie",
     icon: "ni ni-bullet-list-67 text-red",
-    component: <Tables />,
+    component: <CategorieCrud />,
     layout: "/admin",
   },
   {
-    path: "/tables",
+    path: "/Boite",
     name: "Boite",
     icon: "ni ni-bullet-list-67 text-red",
-    component: <Tables />,
+    component: <BoiteCrud />,
     layout: "/admin",
   },
   {
-    path: "/tables",
+    path: "/Energie",
     name: "Energie",
     icon: "ni ni-bullet-list-67 text-red",
-    component: <Tables />,
+    component: <EnergieCrud />,
     layout: "/admin",
   },
   {
-    path: "/tables",
+    path: "/Voiture",
     name: "Voiture",
     icon: "ni ni-bullet-list-67 text-red",
-    component: <Tables />,
+    component: <VoitureCrud />,
     layout: "/admin",
   },
   {
-    path: "/tables",
+    path: "/Fiche_technique",
     name: "Fiche technique",
     icon: "ni ni-bullet-list-67 text-red",
-    component: <Tables />,
+    component: <FicheCrud />,
     layout: "/admin",
   },
   {
