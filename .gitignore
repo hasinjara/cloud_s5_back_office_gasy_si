@@ -1,0 +1,11 @@
+/build
+/node_modules
+package-lock.json
+.eslintcache
+/Documentation
+webservice.txt
+/ViewM/build
+/node_modules
+package-lock.json
+.eslintcache
+/Documentation

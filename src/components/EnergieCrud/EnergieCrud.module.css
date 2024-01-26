@@ -1,0 +1,64 @@
+.EnergieCrud {
+    display: flex; /* Ajustez selon la mise en page souhaitée */
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 20px auto;
+    margin-bottom: 100px;
+    max-width: 80%;
+    position: relative; /* Ajouté pour que 'top' ait un effet */
+    top: 50px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+.EnergieCrud h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.EnergieCrud form {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.EnergieCrud input, .EnergieCrud select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.EnergieCrud button {
+    width: auto;
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.EnergieCrud button:hover {
+    background-color: #fe6600;
+}
+
+
+/* Styles pour le tableau, si nécessaire */
+.EnergieCrud table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.EnergieCrud table, .EnergieCrud th, .EnergieCrud td {
+    border: 1px solid #ddd;
+}
+
+.EnergieCrud th, .EnergieCrud td {
+    padding: 8px;
+    text-align: left;
+}
