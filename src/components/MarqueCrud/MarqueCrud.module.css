@@ -1,4 +1,4 @@
-.VoitureCrud {
+.MarqueCrud {
     display: flex; /* Ajustez selon la mise en page souhaitée */
     flex-direction: column;
     align-items: center;
@@ -14,18 +14,17 @@
     font-family: Arial, sans-serif;
 }
 
-
-.VoitureCrud h2 {
+.MarqueCrud h2 {
     color: #333;
     margin-bottom: 20px;
 }
 
-.VoitureCrud form {
+.MarqueCrud form {
     width: 100%;
     margin-bottom: 20px;
 }
 
-.VoitureCrud input, .VoitureCrud select {
+.MarqueCrud input, .MarqueCrud select {
     width: calc(100% - 20px);
     padding: 10px;
     margin-bottom: 10px;
@@ -33,7 +32,7 @@
     border-radius: 4px;
 }
 
-.VoitureCrud button {
+.MarqueCrud button {
     width: auto;
     padding: 10px 15px;
     background-color: #4CAF50;
@@ -44,22 +43,21 @@
     transition: background-color 0.3s;
 }
 
-.VoitureCrud button:hover {
+.MarqueCrud button:hover {
     background-color: #fe6600;
 }
 
-
 /* Styles pour le tableau, si nécessaire */
-.VoitureCrud table {
+.MarqueCrud table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.VoitureCrud table, .VoitureCrud th, .VoitureCrud td {
+.MarqueCrud table, .MarqueCrud th, .MarqueCrud td {
     border: 1px solid #ddd;
 }
 
-.VoitureCrud th, .VoitureCrud td {
+.MarqueCrud th, .MarqueCrud td {
     padding: 8px;
     text-align: left;
 }
