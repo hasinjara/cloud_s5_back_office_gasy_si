@@ -6,6 +6,7 @@ import Login from "views/examples/Login.js";
 import Tables from "views/examples/Tables.js";
 import Icons from "views/examples/Icons.js";
 import ActiveCrud from "./components/ActiveCrud/ActiveCrud";
+import Annonce from "views/examples/Annonce";
 import MarqueCrud from "./components/MarqueCrud/MarqueCrud";
 import CategorieCrud from "./components/CategorieCrud/CategorieCrud";
 import BoiteCrud from "./components/BoiteCrud/BoiteCrud";
@@ -90,6 +91,13 @@ var routes = [
     name: "CRUD",
     icon: "ni ni-books text-orange",
     component: <ActiveCrud />,
+    layout: "/admin",
+  },
+  {
+    path: "/annonce",
+    name: "Annonce",
+    icon: "ni ni-books text-orange",
+    component: <Annonce />,
     layout: "/admin",
   },
   {
