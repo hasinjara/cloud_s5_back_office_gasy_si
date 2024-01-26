@@ -1,20 +1,3 @@
-/*!
-
-=========================================================
-* Argon Dashboard React - v1.2.3
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import Index from "views/Index.js";
 import Profile from "views/examples/Profile.js";
 import Maps from "views/examples/Maps.js";
@@ -39,13 +22,13 @@ var routes = [
     component: <Icons />,
     layout: "/admin",
   },
-  {
-    path: "/maps",
-    name: "Maps",
-    icon: "ni ni-pin-3 text-orange",
-    component: <Maps />,
-    layout: "/admin",
-  },
+  // {
+  //   path: "/maps",
+  //   name: "Maps",
+  //   icon: "ni ni-pin-3 text-orange",
+  //   component: <Maps />,
+  //   layout: "/admin",
+  // },
   {
     path: "/user-profile",
     name: "User Profile",
@@ -55,25 +38,45 @@ var routes = [
   },
   {
     path: "/tables",
-    name: "Tables",
+    name: "Marque",
     icon: "ni ni-bullet-list-67 text-red",
     component: <Tables />,
     layout: "/admin",
   },
   {
-    path: "/login",
-    name: "Login",
-    icon: "ni ni-key-25 text-info",
-    component: <Login />,
-    layout: "/auth",
+    path: "/tables",
+    name: "Categorie",
+    icon: "ni ni-bullet-list-67 text-red",
+    component: <Tables />,
+    layout: "/admin",
   },
   {
-    path: "/register",
-    name: "Register",
-    icon: "ni ni-circle-08 text-pink",
-    component: <Register />,
-    layout: "/auth",
-    hide:"true",
+    path: "/tables",
+    name: "Boite",
+    icon: "ni ni-bullet-list-67 text-red",
+    component: <Tables />,
+    layout: "/admin",
+  },
+  {
+    path: "/tables",
+    name: "Energie",
+    icon: "ni ni-bullet-list-67 text-red",
+    component: <Tables />,
+    layout: "/admin",
+  },
+  {
+    path: "/tables",
+    name: "Voiture",
+    icon: "ni ni-bullet-list-67 text-red",
+    component: <Tables />,
+    layout: "/admin",
+  },
+  {
+    path: "/tables",
+    name: "Fiche technique",
+    icon: "ni ni-bullet-list-67 text-red",
+    component: <Tables />,
+    layout: "/admin",
   },
   {
     path: "/crud",
