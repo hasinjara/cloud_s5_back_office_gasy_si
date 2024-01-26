@@ -18,12 +18,12 @@ const ActiveCrud = (props) => {
   const [editingIndex, setEditingIndex] = useState(-1);
   
   useEffect(() => {
-    axios.get(`${url}${getEndPoint}`, { headers: getHeaderToken() })
+    axios.get(`${url}${getEndPoint}`, {/* headers: getHeaderToken() */})
       .then(response => {
         if (response.data.error === "aucun" && response.data.data.length > 0) {
           console.log(getHeaderToken);
 
-
+          
 
           const columnNames = Object.keys(response.data.data[0]);
           setFormFields(columnNames.map((colName, index) => ({
@@ -80,15 +80,28 @@ const ActiveCrud = (props) => {
         console.error('Erreur lors de la suppression :', error);
       });
   };
+  
+const updateItem = (index) => {
+  // Mettez à jour l'élément avec les données du formulaire
+  const itemToUpdate = { ...items[index], ...formData };
 
-  const updateItem = (index) => {
-    const updatedItems = [...items];
-    updatedItems[index] = { ...formData };
-    setItems(updatedItems);
-    setFormData({});
-    setEditingIndex(-1);
-    axios.put(`${url}${putEndPoint}`, putBody, updatedItems[index], getHeaderToken())
-  };
+  // Envoie la requête de mise à jour
+  axios.put(`${url}${putEndPoint}/${itemToUpdate[primaryKeyFieldName]}`, itemToUpdate, getHeaderToken())
+    .then(response => {
+      // Mettez à jour l'état 'items' avec les nouvelles données
+      const updatedItems = [...items];
+      updatedItems[index] = itemToUpdate;
+      setItems(updatedItems);
+
+      // Réinitialisez le formulaire et l'indice d'édition
+      setFormData({});
+      setEditingIndex(-1);
+    })
+    .catch(error => {
+      console.error('Erreur lors de la mise à jour :', error);
+    });
+};
+  
   
   const saveItem = () => {
     const newItem = { ...formData };
@@ -147,17 +160,22 @@ const ActiveCrud = (props) => {
     <div className={styles.ActiveCrud}>
       <h1>{formName}</h1>
       <form onSubmit={handleSubmit}>
-        {formFields.map((field, index) => (
-          <div key={index}>
-            <label style={{ color: 'grey' }}>{field.label}</label>
-            <input
-              type={field.type}
-              value={formData[field.name] || ''}
-              placeholder={`Enter ${field.label}`}
-              onChange={(e) => handleChange(e, field.name)}
-            />
-          </div>
-        ))}
+        {formFields.map((field, index) => {
+          // Ignorer le premier élément
+          if (index === 0) return null;
+  
+          return (
+            <div key={index}>
+              <label style={{ color: 'grey' }}>{field.label}</label>
+              <input
+                type={field.type}
+                value={formData[field.name] || ''}
+                placeholder={`Enter ${field.label}`}
+                onChange={(e) => handleChange(e, field.name)}
+              />
+            </div>
+          );
+        })}
         <button type="submit" className="btn save-btn">
           {editingIndex !== -1 ? 'Update' : 'Save'}
         </button>
