@@ -3,7 +3,7 @@ import { useState } from "react";
 import { NavLink as NavLinkRRD, Link } from "react-router-dom";
 // nodejs library to set properties for components
 import { PropTypes } from "prop-types";
-
+import 'bootstrap-icons/font/bootstrap-icons.css';
 // reactstrap components
 import {
   Button,
@@ -220,12 +220,11 @@ const Sidebar = (props) => {
 
           <Nav className="mb-md-3" navbar>
             <NavItem>
-              <NavLink href="https://demos.creative-tim.com/argon-dashboard-react/#/documentation/overview?ref=adr-admin-sidebar">
-                <i className="bi bi" />
-                Getting started
+              <NavLink href="#">
+                <i className="bi bi-box-arrow-left" />
+                Deconnexion
               </NavLink>
             </NavItem>
-            
           </Nav>
           
         </Collapse>
