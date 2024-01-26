@@ -33,8 +33,8 @@ const FicheCrud = (props) => {
   const { login, url, getidUser, getHeaderToken } = useAuth();
   return (
     <>
+      <Header />
       <div className={styles.FicheCrud}>
-        <Header />
         <Container className="mt--7" fluid>
           <ActiveCrud primaryKeyFieldName={'idFicheTechnique'} getEndPoint={'voiture/fiche_tech'} postEndPoint={'voiture/fiche_tech'} putEndPoint={'voiture/fiche_tech'} delEndPoint={'voiture/fiche_tech'} />
         </Container>

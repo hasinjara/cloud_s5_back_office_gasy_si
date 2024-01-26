@@ -160,17 +160,22 @@ const updateItem = (index) => {
     <div className={styles.ActiveCrud}>
       <h1>{formName}</h1>
       <form onSubmit={handleSubmit}>
-        {formFields.map((field, index) => (
-          <div key={index}>
-            <label style={{ color: 'grey' }}>{field.label}</label>
-            <input
-              type={field.type}
-              value={formData[field.name] || ''}
-              placeholder={`Enter ${field.label}`}
-              onChange={(e) => handleChange(e, field.name)}
-            />
-          </div>
-        ))}
+        {formFields.map((field, index) => {
+          // Ignorer le premier élément
+          if (index === 0) return null;
+  
+          return (
+            <div key={index}>
+              <label style={{ color: 'grey' }}>{field.label}</label>
+              <input
+                type={field.type}
+                value={formData[field.name] || ''}
+                placeholder={`Enter ${field.label}`}
+                onChange={(e) => handleChange(e, field.name)}
+              />
+            </div>
+          );
+        })}
         <button type="submit" className="btn save-btn">
           {editingIndex !== -1 ? 'Update' : 'Save'}
         </button>

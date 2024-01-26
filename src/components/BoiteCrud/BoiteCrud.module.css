@@ -45,7 +45,22 @@
 }
 
 .BoiteCrud button:hover {
-    background-color: #45a049;
+    background-color: #fe6600;
+}
+
+
+.BoiteCrud .btn.del-btn {
+    background-color: #ff0000; /* Couleur de fond du bouton (rouge tomate) */
+    color: #ffffff; /* Couleur du texte (blanc) */
+    border: none; /* Supprimer la bordure */
+    padding: 10px 15px; /* Ajuster le padding */
+    border-radius: 4px; /* Rayon de la bordure pour des coins arrondis */
+    cursor: pointer; /* Style du curseur */
+    transition: background-color 0.3s; /* Transition pour le survol */
+}
+
+.BoiteCrud .btn.del-btn:hover {
+    background-color: #e55347; /* Couleur de fond au survol */
 }
 
 /* Styles pour le tableau, si nécessaire */
