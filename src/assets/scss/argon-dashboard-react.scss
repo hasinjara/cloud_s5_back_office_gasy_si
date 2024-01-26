@@ -80,3 +80,11 @@
 
 // React Differences
 @import "react/react-differences";
+@font-face {
+    font-family: 'Poppins';
+    src: url('../font/Poppins-Regular.ttf');
+}
+*{
+    font-family: 'Poppins';
+}
+ 
