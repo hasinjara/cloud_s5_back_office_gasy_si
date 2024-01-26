@@ -1,0 +1,92 @@
+hote : https://devvoitures5backend-production.up.railway.app
+
+exemple haka annonces
+https://devvoitures5backend-production.up.railway.app/annonce
+
+
+-- json - mirenty
+method POST
+/register/signin
+request body
+{
+    "mail":"admin@gmail.com",
+    "mdp":"admin"
+}
+
+-- json liste des annonces valider - search mot cle - seacrh multi critere
+Methode GET daholo nen json manomboka eto
+/annonce/valider
+/annonce/search/{motcle} exemple /annonce/seacrh/m
+-- multi critere
+/annonce/search
+request body
+{
+  "kilometrage": {
+    "min": 16000,
+    "max": 30000
+  },
+  "prixVente" : {
+      "min":4000000,
+      "max":6000000
+  },
+  "consommation" : {
+      "min":5,
+      "max":10
+  },
+  "idVoiture":"V1",
+  "idCategorie":"CATEG9",
+  "idEnergie":"EN2",
+  "idMarque":"MA1",
+  "idBoite":"B1"
+}  
+
+
+-- json liste mes annonces avec token/ mes favoris
+/annonce/users
+/favoris_user_annonce
+
+
+-- mirenty crud 
+PUT / DELETE / POST mila token
+GET tsy mila token
+
+-- marque
+/marque
+request body 
+{
+  "marque":"test"
+}
+
+-- energie 
+...
+
+-- boite
+...
+
+-- categorie
+...
+
+-- fiche technique
+/voiture_fichetechnique
+request body 
+{
+            "idVoiture": "V1",
+            "idEnergie": "EN2",
+            "idBoite": "B1",
+            "moteur": "STI",
+            "litreMoteur": 1.8,
+            "consommation": 7.5,
+            "puissance": 10.0,
+            "nbVitesse": 5.0,
+            "nbPlace": 5.0,
+            "nbPorte": 5.0,
+            "longueur": 3.7,
+            "poids": -1200.0
+}
+
+NB : jerena tsara le erreur, fa misy exception rehefa ratsy le input
+de mila jerena foana le ao am postman
+
+
+
+

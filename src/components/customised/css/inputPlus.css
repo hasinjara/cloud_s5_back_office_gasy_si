@@ -1,0 +1,45 @@
+div {
+    margin-bottom: 15px;
+}
+
+label {
+    color: grey;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid silver;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ajoutez ces styles pour le changement de couleur au survol de la souris */
+input:hover {
+    border-color: lightblue;
+}
+
+/* Ajoutez ces styles pour la forme trapezoidale et les "roues" */
+input:before,
+input:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    background-color: black;
+}
+
+input:before {
+    left: -10px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+input:after {
+    right: -10px;
+    clip-path: polygon(0 0, 100% 0, 0% 100%);
+}

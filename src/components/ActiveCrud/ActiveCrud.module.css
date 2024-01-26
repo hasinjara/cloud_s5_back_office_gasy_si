@@ -1,0 +1,58 @@
+/* ActiveCrud.module.css */
+
+.ActiveCrud {
+    display: flex;
+    /* Disposition Verticale : Utilise Flexbox pour aligner les éléments verticalement */
+    flex-direction: column;
+    /* Disposition Verticale : Alignement vertical des éléments */
+
+    /* Ajoutez d'autres styles selon les besoins pour le positionnement, la dynamique, etc. */
+}
+
+.crud-table {
+    position: fixed;
+    /* Position Fixe pour le Tableau : Fixe la position du tableau sur la page */
+    /* Ajoutez d'autres styles pour le tableau dynamique si nécessaire */
+}
+
+/* Ajoutez des styles pour les balises <input> dans le formulaire */
+.ActiveCrud input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Ajoutez des styles pour les boutons dans le formulaire et le tableau */
+.ActiveCrud button {
+    margin-right: 5px;
+    /* Espacement entre les boutons */
+}
+
+/* Ajoutez des styles pour la réactivité du conteneur si nécessaire */
+@media screen and (max-width: 600px) {
+
+    /* Styles spécifiques pour les écrans plus petits */
+    .ActiveCrud {
+        /* Ajoutez des styles spécifiques pour les écrans plus petits si nécessaire */
+    }
+}
+
+.scrollToTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.scrollToTopBtn:hover {
+    background-color: #45a049;
+}

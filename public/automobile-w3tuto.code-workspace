@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../src"
+		},
+		{
+			"path": "../ViewMe"
+		},
+		{
+			"path": "../../entrainement-w3-school/src"
+		}
+	]
+}
