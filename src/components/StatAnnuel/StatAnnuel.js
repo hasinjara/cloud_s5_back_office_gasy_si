@@ -21,37 +21,119 @@ import {
   Col,
 } from "reactstrap";
 
+
 const StatAnnuel = () => {
+  const { url, getHeaderToken, getToken, getHeaderTokenTest, handleRequestError } = useAuth();
+
+  function separerDonnees(jsonData) {
+    const donnees = jsonData;
+    const users = donnees.data.users;
+    const revenuMensuels = donnees.data.revenuMensuels;
+    const annonceMois = donnees.data.annonceMois;
+    return { users, revenuMensuels, annonceMois };
+  }
+
   
-  const [chartData, setChartData] = useState(null);
-  const { url, getToken } = useAuth();
+
+  const [dataParAnnee, setDataParAnnee] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [selectedYear, setSelectedYear] = useState(null);
 
-  const data = [
-    { category: 'A', value: 10 },
-    { category: 'B', value: 15 },
-    { category: 'C', value: 20 },
-    { category: 'D', value: 12 },
-    { category: 'E', value: 12 },
-    { category: 'F', value: 12 },
-    { category: 'G', value: 12 },
-    { category: 'H', value: 12 },
-    { category: 'I', value: 12 },
-    { category: 'J', value: 12 },
-    { category: 'K', value: 12 },
-    { category: 'L', value: 12 },
-  ];
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
+  const [users, setUsers] = useState([]);
+  const [revenuMensuels, setRevenuMensuels] = useState([]);
+  const [annonceMois, setAnnonceMois] = useState([]);
+  const anneeActuelle = new Date().getFullYear();
+  const [endPoint,setEndPoint] = useState("");
 
+  useEffect(() => {
+    const newEndPoint = `stat_annuel/${selectedYear}`;
+    //console.log(newEndPoint);
+    axios.get(`${url}${newEndPoint}`, getHeaderToken())
+      .then(response => {
+        // ... traitement de la réponse ...
+        console.log("taftftaftafatfatafa")
+        if (response.data.error === "aucun") {
+          setDataParAnnee(response.data);
+          const { users, revenuMensuels, annonceMois } = separerDonnees(response.data);
+          setUsers(users);
+          setRevenuMensuels(revenuMensuels);
+          setAnnonceMois(annonceMois);
+          setLoading(false);
+          //alert(loading);
+          
+        }
+      })
+      .catch(error => {
+        console.error('Erreur de requête :', error);
+        handleRequestError(error);
+      });
+  }, [url, selectedYear, getHeaderToken]);
+
+
+  function getMonthLetter(monthNumber) {
+    var months = ['Janvier','Fevrier','Mars','Avril','Mais','Juin','Juillet','Aout','Septembre','Octobre','Novembre','Decembre'];
+    return months[monthNumber - 1];
+  }
+  
+  
+  
+  function transformerUsers(users) {
+    return users.map(user => {
+      return {
+        mois: getMonthLetter( user.mois ),
+        nbUser: user.nbUsers
+      };
+    });
+  }
+
+  function transformerAnnonce(Annonces) {
+    return Annonces.map(Annonce => {
+      return {
+        mois: getMonthLetter( Annonce.mois ),
+        nbAnnonce: Annonce.nbAnnonce
+      };
+    });
+  }
+  function transformerrevenuMensuelsNbCommition(revenuMensuels) {
+    return revenuMensuels.map(revenue => {
+      return {
+        mois: getMonthLetter( revenue.mois ),
+        nbCommission: revenue.nbCommission
+      };
+    });
+  }
+
+  function transformerrevenuMensuelstotalCommission(revenuMensuels) {
+    return revenuMensuels.map(totalCommission => {
+      return {
+        mois: getMonthLetter( totalCommission.mois ),
+        totalCommission: totalCommission.totalCommission
+      };
+    });
+  }
+
+  const usersData = transformerUsers(users);
+  const AnnoncesData = transformerAnnonce(annonceMois);
+  const revenuMensuelsNbCommition = transformerrevenuMensuelsNbCommition(revenuMensuels);
+  const revenuMensuelstotalCommission = transformerrevenuMensuelstotalCommission(revenuMensuels);
+  
+  console.log(usersData);
   const handleYearChange = (e) => {
-    setSelectedYear(e.target.value);
   };
-
-  const handleSubmit = () => {
-    // Ajoutez votre logique pour gérer la soumission ici
-    // Vous pouvez utiliser la valeur de selectedYear pour effectuer des actions
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const yearInputValue = document.getElementById('yearInput').value;
+  
+    if (!isNaN(yearInputValue) && yearInputValue >= 1950 && yearInputValue <= new Date().getFullYear()) {
+      setSelectedYear(yearInputValue);
+      setLoading(true);
+      console.log('Année sélectionnée : ' + yearInputValue);
+    } else {
+      alert('Veuillez entrer une année valide.');
+    }
   };
-
+  
 
   return (
     <Container className="mt--7" fluid>
@@ -59,18 +141,14 @@ const StatAnnuel = () => {
         <Col>
           <Card className='shadow'>
             <Col>
-                <label htmlFor="yearInput">Année :</label>
-                <input
-                  type="number"
-                  id="yearInput"
-                  value={selectedYear || ''}
-                  onChange={handleYearChange}
-                />
-              </Col>
-              <Col>
-              <button onClick={handleSubmit} className='btn bn-primary' style={{backgroundColor:"black",color:"white",fontSize:"smaller"}} > Submit</button>
-              </Col>
-            
+              <input
+                type="number"
+                id="yearInput"
+              />
+            </Col>
+            <Col>
+              <button onClick={handleSubmit} className='btn bn-primary' style={{ backgroundColor: "black", color: "white", fontSize: "smaller" }} > Submit</button>
+            </Col>
             {selectedYear && (
               <div>
                 <h4>Année sélectionnée : {selectedYear}</h4>
@@ -84,40 +162,116 @@ const StatAnnuel = () => {
       <Row style={{ marginTop: '100px' }}>
         <Col>
           <Card className='shadow'>
+          <CardHeader className="bg-transparent">
+          <h5 style={{ textAlign: 'center' }}>Nombre d'utilisateurs</h5>
             <div className={styles.StatTest}>
-              <VictoryChart theme={VictoryTheme.material} domainPadding={20}>
-                <VictoryAxis />
-                <VictoryAxis dependentAxis />
-                <VictoryBar data={data} x="category" y="value" />
+              {loading ? (
+                <Row>
+                  <Col></Col>
+                  <Col><Loader type="TailSpin" color="#32325d" height={80} width={80} /></Col>
+                  <Col></Col>
+                </Row>
+                  
+                ) : (
+              <VictoryChart theme={VictoryTheme.material} domainPadding={10}>
+                {/* <VictoryAxis /> */}
+                <VictoryAxis 
+                 tickLabelComponent={<VictoryLabel angle={-45} y={320} />}
+                  
+                />
+                <VictoryAxis dependentAxis  />
+                <VictoryBar data={usersData}  x='mois' y="nbUser" />
               </VictoryChart>
+              )}
             </div>
-          </Card>   
+            </CardHeader>
+          </Card>
         </Col>
+
         <Col>
           <Card className='shadow'>
+          <CardHeader className="bg-transparent">
+          <h5 style={{ textAlign: 'center' }}>Nombre d'annonces</h5>
             <div className={styles.StatTest}>
+            {loading ? ( 
+                <Row>
+                  <Col></Col>
+                  <Col><Loader type="TailSpin" color="#32325d" height={80} width={80} /></Col>
+                  <Col></Col>
+                </Row>
+                  
+             ) : (
               <VictoryChart theme={VictoryTheme.material} domainPadding={20}>
-                <VictoryAxis />
+                <VictoryAxis  
+                  tickLabelComponent={<VictoryLabel angle={-45} y={320} />}
+                />
                 <VictoryAxis dependentAxis />
-                <VictoryBar data={data} x="category" y="value" />
+                <VictoryBar data={AnnoncesData} x="mois" y="nbAnnonce" />
               </VictoryChart>
+            )}
             </div>
-          </Card>   
+          </CardHeader>
+          </Card>
+        
         </Col>
+
+      </Row>
+      <br></br>
+      <Row>
         <Col>
           <Card className='shadow'>
+            <CardHeader className="bg-transparent">
+            <h5 style={{ textAlign: 'center' }}>Nombre de commission obtenus</h5>
+              <div className={styles.StatTest}>
+                {loading ? ( 
+                  <Row>
+                    <Col></Col>
+                    <Col><Loader type="TailSpin" color="#32325d" height={80} width={80} /></Col>
+                    <Col></Col>
+                  </Row>
+                    
+                ) : (
+                <VictoryChart theme={VictoryTheme.material} domainPadding={20}>
+                  <VictoryAxis 
+                    tickLabelComponent={<VictoryLabel angle={-45} y={320} />}
+                  />
+                  <VictoryAxis dependentAxis />
+                  <VictoryBar data={revenuMensuelsNbCommition} x="mois" y="nbCommission" />
+                </VictoryChart>
+                )}
+              </div>
+            </CardHeader>
+          </Card>
+        </Col>
+
+        <Col>
+          <Card className='shadow'>
+          <CardHeader className="bg-transparent">
+          <h5 style={{ textAlign: 'center' }}>Total revenus des commissions</h5>
             <div className={styles.StatTest}>
+            {loading ? ( 
+                  <Row>
+                    <Col></Col>
+                    <Col><Loader type="TailSpin" color="#32325d" height={80} width={80} /></Col>
+                    <Col></Col>
+                  </Row>
+                    
+                ) : (
               <VictoryChart theme={VictoryTheme.material} domainPadding={20}>
-                <VictoryAxis />
+                <VictoryAxis 
+                  tickLabelComponent={<VictoryLabel angle={-45} y={320} />}
+                />
                 <VictoryAxis dependentAxis />
-                <VictoryBar data={data} x="category" y="value" />
+                <VictoryBar data={revenuMensuelstotalCommission} x="mois" y="totalCommission" />
               </VictoryChart>
+              )}
             </div>
-          </Card>   
+            </CardHeader>
+          </Card>
         </Col>
       </Row>
     </Container>
-   
+
   );
 };
 
