@@ -20,7 +20,7 @@ const Annonce = () =>{
           <div className="col">
             <Card className="shadow">
               <CardHeader className="bg-transparent">
-                <h3 className="mb-0">Annonces</h3>
+                <h3 className="mb-0">Annonces Non Validées</h3>
               </CardHeader>
               <CardBody>
                 <Row className="icon-examples">
