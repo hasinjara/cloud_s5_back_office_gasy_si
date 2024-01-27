@@ -11,5 +11,7 @@ ISSUE_TEMPLATE.md
 jsconfig.json
 package.json
 package-lock.json
-README.md
-LICENSE
+.eslintcache
+/Documentation
+.env
+package.json

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './FicheCrud.module.css';
 
 import { useState } from "react";
-import Chart from "chart.js";
+// import Chart from "chart.js";
 
 import {
   Container,
@@ -22,7 +22,7 @@ const FicheCrud = (props) => {
   const [chartExample1Data, setChartExample1Data] = useState("data1");
 
   if (window.Chart) {
-    parseOptions(Chart, chartOptions());
+    //parseOptions(Chart, chartOptions());
   }
 
   const toggleNavs = (e, index) => {
