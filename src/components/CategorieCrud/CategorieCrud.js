@@ -32,7 +32,6 @@ const CategorieCrud = (props) => {
   const { login, url, getidUser, getHeaderToken } = useAuth();
   return (
     <>
-      <Header />
       <div className={styles.CategorieCrud}>
         <Container className="mt--7" fluid>
           <ActiveCrud primaryKeyFieldName={'idCategorie'} getEndPoint={'categorie'} postEndPoint={'categorie'} putEndPoint={'categorie'} delEndPoint={'categorie'} />

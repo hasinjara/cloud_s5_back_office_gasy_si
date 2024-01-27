@@ -53,11 +53,11 @@ const Index = (props) => {
   
   return (
     <>
-      <Header />
-      <Container className="mt--7" fluid>
-        {/* <StaticCrud/> */}
+      {/* <Header /> */}
+      <br/>
+      {/* <Container className="mt--7"  fluid>
         <ActiveCrud primaryKeyFieldName={'idMarque'} getEndPoint={'marque'} postEndPoint={'marque'} putEndPoint={'marque'} delEndPoint={'marque'} />
-      </Container>
+      </Container> */}
     </>
   );
 };

@@ -79,7 +79,7 @@ const VoitureCrud = () => {
   }, []);
 
   const handleCheckboxChange = (categoryId) => {
-    alert(selectedCategories);
+    //alert(selectedCategories);
     setSelectedCategories((prevCategories) => {
       if (prevCategories.includes(categoryId)) {
         return prevCategories.filter((id) => id !== categoryId);
@@ -121,48 +121,64 @@ return (
   <Container className="main-content container-fluid mt--7" fluid>
     <Row>
       <div className="col">
-        <Card className='shadow'>
-          <CardHeader className="bg-transparent">
-            <h3 className='mb-4'>Action Pour Voiture</h3>
-          </CardHeader>
-          <h1>Voitures</h1> 
+        <Card className='shadow' style={{padding: 38}}>
+         
+          <h3>Insertion de voiture</h3> 
+          <br/>
           {/* .... */}
+          
           <form onSubmit={handleSubmit}>
-            {categories.map((category) => (
-              <label key={category.id}>
-                <input
-                  type="checkbox"
-                  value={category.idCategorie}
-                  onClick={() => handleCheckboxChange(category.idCategorie)}
-                />
-                {category.idCategorie}
-              </label>
-            ))}
-            <select onChange={handleSetMarque} >
+          <p>Choix de ses categories</p>
+            <div style={{display: "flex",
+    height: "auto",
+    justifyContent: "space-evenly"}}>
+      
+              {categories.map((category) => (
+                <p>
+                <label key={category.categorie}>
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value={category.idCategorie}
+                    onClick={() => handleCheckboxChange(category.idCategorie)}
+                  />
+                  {category.categorie}
+                </label>
+                </p>
+              ))}
+            </div>
+            <label>Marque</label>
+            <select className='form-control' onChange={handleSetMarque} >
             {tabMarque.map((marque) => (
               <option value={marque.idMarque} >{marque.marque}</option>
             ))}
             </select>
+            
+            <label>Nom du modele</label>
             <input
+                  className='form-control'
                   type="text"
                   name="nomVoiture"
                   value={nomVoiture}
                   onChange={handleSetNomVoiture}
                   //onChange={(e) => handleInputChangeWithName(e, 'fieldName')}
             />
+            <label>Annee de sortie</label>
             <input
+                className='form-control'
                   type="number"
                   name="annee"
                   value={annee}
                   onChange={handleSetAnnee}
                   //onChange={(e) => handleInputChangeWithName(e, 'fieldName')}
             />
+            <br/>
 
-            <button type="submit">Insérer les données</button>
-          </form>
+            <button type="submit" className='btn bn-primary' style={{backgroundColor:"black",color:"white",fontSize:"smaller"}}>Insérer les données</button>
+          </form><br/><br/>
           {/* ... */}
+          <h3>Liste des voitures</h3>
           <CardBody>
-
             <Row className='icon-exemples'>
               {tabVoiture.length > 0 ? (
                 <table className="table">
@@ -171,7 +187,6 @@ return (
                       <th>Nom</th>
                       <th>Marque</th>
                       <th>Année de sortie</th>
-                      <th>Catégorie</th>
                     </tr>
                   </thead>
                   <tbody>
