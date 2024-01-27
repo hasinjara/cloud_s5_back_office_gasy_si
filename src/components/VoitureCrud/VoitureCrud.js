@@ -76,7 +76,7 @@ const VoitureCrud = () => {
     getAll('voiture_marque');
     getAllCateg('categorie');
     getAllMarque('marque');
-  }, []);
+  }, [url, getToken()]);
 
   const handleCheckboxChange = (categoryId) => {
     alert(selectedCategories);
