@@ -50,7 +50,7 @@ const ActiveCrud = (props) => {
       .catch(error => {
         console.error('Erreur de requête signing :', error);
       });
-  }, [url, getEndPoint, getHeaderToken]);
+  }, [url, getEndPoint, getHeaderToken()]);
 
   const handleChange = (e, fieldName) => {
     setFormData({ ...formData, [fieldName]: e.target.value });

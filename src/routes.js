@@ -15,6 +15,15 @@ import EnergieCrud from "./components/EnergieCrud/EnergieCrud";
 import FicheCrud from "./components/FicheCrud/FicheCrud";
 import StatGlobal from "components/StatGlobal/StatGlobal";
 
+import AnnonceDetail from "views/examples/AnnonceDetail";
+import SearchRep from "views/examples/SearchRep";
+import AnnonceValid from "views/examples/AnnonceValid";
+import AnnonceVendu from "views/examples/AnnonceVendu";
+import AnnonceNonValid from "views/examples/AnnonceNonValid";
+import AnnonceRefus from "views/examples/AnnonceRefus";
+import StatTest from "components/StatTest/StatTest";
+import StatAnnuel from "components/StatAnnuel/StatAnnuel";
+
 var routes = [
   {
     path: "/index",
@@ -80,10 +89,31 @@ var routes = [
     layout: "/admin",
   },
   {
-    path: "/annonce",
-    name: "Annonce",
+    path: "/annonceValid",
+    name: "Annonces Validées",
+    icon: "ni ni-books text-orange",
+    component: <AnnonceValid />,
+    layout: "/admin",
+  },
+  {
+    path: "/annonceNonValid",
+    name: "Annonces Non Validées",
     icon: "ni ni-books text-orange",
     component: <Annonce />,
+    layout: "/admin",
+  },
+  {
+    path: "/annonceVendu",
+    name: "Annonces Vendues",
+    icon: "ni ni-books text-orange",
+    component: <AnnonceVendu />,
+    layout: "/admin",
+  },
+  {
+    path: "/annonceRefus",
+    name: "Annonces Refusées",
+    icon: "ni ni-books text-orange",
+    component: <AnnonceRefus />,
     layout: "/admin",
   },
   {
@@ -91,6 +121,32 @@ var routes = [
     name: "Stat Global",
     icon: "ni ni-books text-orange",
     component: <StatGlobal />,
+    layout: "/admin",
+  },
+  
+  {
+    path: "/annonceDetail/:idAnnonce",
+    name: "AnnonceDetail",
+    icon: "ni ni-align-left-2 text-blue",
+    component: <AnnonceDetail />,
+    layout: "/admin",
+    hide: "true",
+  },
+
+  {
+    path: "/search",
+    name: "Search",
+    icon: "ni ni-album-2 text-blue",
+    component: <SearchRep />,
+    layout: "/admin",
+    hide: "true",
+
+  },
+  {
+    path: "/statannuel",
+    name: "Stat Annuel",
+    icon: "ni ni-books text-orange",
+    component: <StatAnnuel />,
     layout: "/admin",
   },
 ];

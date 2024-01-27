@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './MarqueCrud.module.css';
 
 import { useState } from "react";
-import Chart from "chart.js";
+// import Chart from "chart.js";
 
 import {
   Container,
@@ -23,13 +23,13 @@ const MarqueCrud = (props) => {
   const [chartExample1Data, setChartExample1Data] = useState("data1");
 
   if (window.Chart) {
-    parseOptions(Chart, chartOptions());
+    //parseOptions(Chart, chartOptions());
   }
 
   const toggleNavs = (e, index) => {
     e.preventDefault();
     setActiveNav(index);
-    setChartExample1Data("data" + index);
+    //setChartExample1Data("data" + index);
   };
   const { login, url, getidUser, getHeaderToken } = useAuth();
   return (
