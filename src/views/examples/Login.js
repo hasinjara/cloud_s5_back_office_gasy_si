@@ -17,11 +17,20 @@ import axios from 'axios';
 import { AuthProvider, useAuth } from "../../AuthContext";
 import { useNavigate } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'assets/css/login.css'
+import 'assets/css/login.css';
+import { TailSpin as Loader } from "react-loader-spinner";
 const Login = () => {
   const navigate = useNavigate();
   const { login, url , getidUser} = useAuth();
-
+  const [loading, setLoading] = useState(false);
+  const loadStyle = {
+      
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100vh', // 100% de la hauteur de la fenêtre
+    width: '100vw', // 100% de la largeur de la fenêtre
+  }
 
   const [mail, setEmail] = useState("admin@gmail.com");
   const [mdp, setPassword] = useState("admin");
@@ -35,14 +44,24 @@ const Login = () => {
       .then(response => {
         if (response.data.error == "aucun") {
           login(response.data.data[1].token, response.data.data[0]);
+          setLoading(false);
           navigate("/admin/index");
         }
       })
       .catch(error => {
         console.error('Erreur de requête signing :', error);
+        setLoading(false);
       });
   }
+  if (loading) {
+    return <>
+    <div
+      style={loadStyle}
+    >
+      <Loader type="TailSpin" color="#32325d" height={80} width={80} style={{ width: '45%' }} />
+    </div></>
 
+  }
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -57,6 +76,7 @@ const Login = () => {
   };
 
   const handleSignIn = (e) => {
+    setLoading(true);
     e.preventDefault();
     console.log("Email:", mail);
     console.log("Password:", mdp);
