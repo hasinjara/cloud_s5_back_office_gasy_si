@@ -56,7 +56,7 @@ const StatGlobal= () => {
         console.error('No data received or data structure is incorrect.');
         return;
       }
-
+      
       const data = response.data.data;
       setChartData(data);
       setLoading(false)
