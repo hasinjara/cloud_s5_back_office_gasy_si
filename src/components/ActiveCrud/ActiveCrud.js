@@ -9,7 +9,7 @@ const ActiveCrud = (props) => {
 
   
   
-  const { login, url, getIdUser, getHeaderToken, getToken } = useAuth();
+  const { url,getHeaderToken, getToken,getHeaderTokenTest,handleRequestError } = useAuth();
   const { delEndPoint, postEndPoint, putEndPoint, getEndPoint } = props;
   const [formFields, setFormFields] = useState([]);
 
@@ -105,16 +105,19 @@ const updateItem = (index) => {
 };
   
   
-  const saveItem = () => {
+  const saveItem = async () => {
     const newItem = { ...formData };
     setItems([...items, newItem]);
     setFormData({});
     setEditingIndex(-1);
-    axios.post(`${url}${postEndPoint}`, newItem, getHeaderToken())
-
-
-
+    // axios.post(`${url}${postEndPoint}`, newItem, getHeaderToken())
+    try {
+      const response = await axios.post(`${url}${postEndPoint}`, newItem, getHeaderToken());
+      // Gérer la réponse ici si nécessaire
+    } catch (error) {
+      handleRequestError(error);
   };
+}
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -125,10 +128,6 @@ const updateItem = (index) => {
     }
   };
 
-  // const handleEditClick = (index) => {
-  //   setEditingIndex(index);
-  //   setFormData({ ...items[index] });
-  // };
 
   const handleEditClick = (index) => {
     const itemData = items[index];
@@ -155,9 +154,9 @@ const updateItem = (index) => {
   function enleverDerniereLettre(chaine) {
     return chaine.slice(0, -1);
   }
-
-
-
+  
+  
+  
   return (
 
     <div className={styles.ActiveCrud}>
@@ -211,8 +210,7 @@ const updateItem = (index) => {
                     />
                   ) : (
                     item[field.name]
-                  )}
-                  {/* {console.log( )} */}
+                  )}                
                 </td>
               ))}
               <td>
