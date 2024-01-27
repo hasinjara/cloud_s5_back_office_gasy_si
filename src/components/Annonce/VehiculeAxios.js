@@ -74,7 +74,7 @@ const VehiculeAxios = () => {
       .catch((error) => {
         console.error('Erreur de requête VehiculeAxios :', error);
       });
-  }, [endpoint, url, getHeaderToken]);
+  }, [endpoint, url]);
 
   const handleValidation = async (id, index, e ) => {
     // Set the corresponding CopyToClipboard as hidden

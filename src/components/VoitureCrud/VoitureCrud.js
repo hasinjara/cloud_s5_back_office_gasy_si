@@ -137,7 +137,7 @@ return (
                 <p>
                 <label key={category.categorie}>
                   <input
-                    class="form-check-input"
+                    className="form-check-input"
                     type="checkbox"
                     value={category.idCategorie}
                     onClick={() => handleCheckboxChange(category.idCategorie)}

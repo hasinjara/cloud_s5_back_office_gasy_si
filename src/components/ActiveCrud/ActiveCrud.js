@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './ActiveCrud.module.css';
-import { useAuth } from 'AuthContext'; // Assurez-vous d'avoir le bon chemin
+import { useAuth } from 'AuthContext';
 import axios from 'axios';
 
 const ActiveCrud = (props) => {
@@ -8,8 +8,8 @@ const ActiveCrud = (props) => {
   const {  primaryKeyFieldName } = props;
 
   
-  
   const { url,getHeaderToken, getToken,getHeaderTokenTest,handleRequestError } = useAuth();
+  // const HeaderToken = getHeaderToken();
   const { delEndPoint, postEndPoint, putEndPoint, getEndPoint } = props;
   const [formFields, setFormFields] = useState([]);
 
@@ -24,9 +24,7 @@ const ActiveCrud = (props) => {
       .then(response => {
         if (response.data.error === "aucun" && response.data.data.length > 0) {
           console.log(getHeaderToken);
-
           
-
           const columnNames = Object.keys(response.data.data[0]);
           setFormFields(columnNames.map((colName, index) => ({
             label: colName,
@@ -34,7 +32,7 @@ const ActiveCrud = (props) => {
             type: 'text'
 
           })));
-
+          
           const initialFormData = columnNames.reduce((obj, colName) => {
             obj[colName] = '';
             return obj;
@@ -50,8 +48,8 @@ const ActiveCrud = (props) => {
       .catch(error => {
         console.error('Erreur de requête signing :', error);
       });
-  }, [url, getEndPoint, getHeaderToken()]);
-
+  }, [url, getEndPoint, getToken()]);
+  
   const handleChange = (e, fieldName) => {
     setFormData({ ...formData, [fieldName]: e.target.value });
   };
@@ -223,7 +221,7 @@ const updateItem = (index) => {
                     Edit
                   </button>
                 )}
-                <button class="delete" style={{backgroundColor: 'red'}} onClick={() => handleOperation('delete', index)}>
+                <button className="delete" style={{backgroundColor: 'red'}} onClick={() => handleOperation('delete', index)}>
                   Delete
                 </button>
               </td>
