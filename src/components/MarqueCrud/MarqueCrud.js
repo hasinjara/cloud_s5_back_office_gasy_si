@@ -34,7 +34,6 @@ const MarqueCrud = (props) => {
   const { login, url, getidUser, getHeaderToken } = useAuth();
   return (
     <>
-      {/* <Header /> */}
       <div className={styles.MarqueCrud}>
         <Container className="mt--7" fluid>
           <ActiveCrud primaryKeyFieldName={'idMarque'} getEndPoint={'marque'} postEndPoint={'marque'} putEndPoint={'marque'} delEndPoint={'marque'} />

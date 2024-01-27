@@ -27,32 +27,18 @@ import StatAnnuel from "components/StatAnnuel/StatAnnuel";
 var routes = [
   {
     path: "/index",
-    name: "Dashboard",
+    name: "Admin Page",
     icon: "ni ni-tv-2 text-primary",
     component: <Index />,
     layout: "/admin",
   },
-  {
-    path: "/icons",
-    name: "Icons",
-    icon: "ni ni-planet text-blue",
-    component: <Icons />,
-    layout: "/admin",
-  },
   // {
-  //   path: "/maps",
-  //   name: "Maps",
-  //   icon: "ni ni-pin-3 text-orange",
-  //   component: <Maps />,
+  //   path: "/user-profile",
+  //   name: "User Profile",
+  //   icon: "ni ni-single-02 text-yellow",
+  //   component: <Profile />,
   //   layout: "/admin",
   // },
-  {
-    path: "/user-profile",
-    name: "User Profile",
-    icon: "ni ni-single-02 text-yellow",
-    component: <Profile />,
-    layout: "/admin",
-  },
   {
     path: "/Marque",
     name: "Marque",
