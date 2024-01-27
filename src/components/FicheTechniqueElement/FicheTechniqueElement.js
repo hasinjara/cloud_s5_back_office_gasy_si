@@ -24,7 +24,7 @@ const FicheTechniqueElement = ({ value }) => {
     <td>{FicheTechniqueElement.poids}</td>
     <td>{FicheTechniqueElement.energie}</td>
     <td>{FicheTechniqueElement.boite}</td>
-    <td><button class="btn-primary"> Modifier</button></td>
+    <td><button className="btn-primary"> Modifier</button></td>
   </>
   );
 

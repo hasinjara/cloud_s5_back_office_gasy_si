@@ -86,13 +86,13 @@ const Login = () => {
 
   return (
     <>
-    <div class="container">
+    <div className="container">
       <div style={{padding: 81}} className="boite">
-      <div class="row">
-        <div class="col-md-6" id="image">
+      <div className="row">
+        <div className="col-md-6" id="image">
         
         </div>
-        <div class="col-md-6" id="formulaire" style={{padding:0}}>
+        <div className="col-md-6" id="formulaire" style={{padding:0}}>
         <Card className="card">
           <CardHeader className="bg-transparent pb-5" style={{height: 124,border: "none"}}>
             <div className="text-muted text-center mt-2 mb-3">
@@ -189,7 +189,7 @@ const Login = () => {
             <br/>
               <div className="text-center">
                 <Button
-                  class="btn btn-primary"
+                  className="btn btn-primary"
                   id="valider"
                   type="button"
                   onClick={handleSignIn}
