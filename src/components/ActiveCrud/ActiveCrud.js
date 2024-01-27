@@ -223,7 +223,7 @@ const updateItem = (index) => {
                     Edit
                   </button>
                 )}
-                <button class="delete" style={{backgroundColor: 'red'}} onClick={() => handleOperation('delete', index)}>
+                <button className="delete" style={{backgroundColor: 'red'}} onClick={() => handleOperation('delete', index)}>
                   Delete
                 </button>
               </td>
