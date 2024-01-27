@@ -47,7 +47,7 @@ const AnnonceGeneral = ({endpoint}) => {
       .catch(error => {
         console.error('Erreur de requête VehiculeAxios :', error);
       });
-  }, [url, endpoint, getHeaderToken()]);  // Include endpoint as a dependency
+  }, [url, endpoint]);  // Include endpoint as a dependency
 
   if (loading) {
     return <>

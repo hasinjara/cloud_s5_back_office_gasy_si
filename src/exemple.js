@@ -4,6 +4,7 @@ const getHeaderToken = () => {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
+        '--force --legacy-peer-deps' :'s'
       }
     };
   };
