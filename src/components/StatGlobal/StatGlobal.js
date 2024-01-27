@@ -206,11 +206,15 @@ const StatGlobal= () => {
               <CardHeader className="bg-transparent">
                 <h2 style={{ textAlign: 'center' }}>Nombre d'annonce par voiture</h2>
                 {state.loading ? (
-                  <Loader type="TailSpin" color="#32325d" height={80} width={80} />
+                  <Row>
+                  <Col></Col>
+                  <Col><Loader type="TailSpin" color="#32325d" height={80} width={80} /></Col>
+                  <Col></Col>
+                </Row>
                 ) : (
                   
                   <VictoryChart theme={VictoryTheme.material}
-                      domainPadding={20} >
+                      domainPadding={10} >
                       <VictoryAxis tickFormat={() => ''} />
                       
                       <VictoryAxis dependentAxis />
@@ -231,7 +235,11 @@ const StatGlobal= () => {
               <CardHeader className="bg-transparent">
                 <h2 style={{ textAlign: 'center' }}>Nombre d'annonce par marque</h2>
                 {loading ? (
-                  <Loader type="TailSpin" color="#32325d" height={80} width={80} />
+                  <Row>
+                  <Col></Col>
+                  <Col><Loader type="TailSpin" color="#32325d" height={80} width={80} /></Col>
+                  <Col></Col>
+                </Row>
                 ) : (
                   <VictoryChart theme={VictoryTheme.material}
                     domainPadding={20} >
@@ -254,7 +262,11 @@ const StatGlobal= () => {
               <CardHeader className="bg-transparent">
                 <h2 style={{ textAlign: 'center' }}>Nombre d'annonce par categorie</h2>
                 {loading ? (
-                  <Loader type="TailSpin" color="#32325d" height={80} width={80} />
+                  <Row>
+                    <Col></Col>
+                    <Col><Loader type="TailSpin" color="#32325d" height={80} width={80} /></Col>
+                    <Col></Col>
+                  </Row>
                 ) : (
                   <VictoryChart theme={VictoryTheme.material}
                     domainPadding={20} >

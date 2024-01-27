@@ -36,13 +36,9 @@ const StatAnnuel = () => {
   
 
   const [dataParAnnee, setDataParAnnee] = useState(null);
-  const [chartData, setChartData] = useState(null);
   const [loading, setLoading] = useState(true);
+
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
-  const [state, setState] = useState({
-    chartData: null,
-    loading: true
-  })
   const [users, setUsers] = useState([]);
   const [revenuMensuels, setRevenuMensuels] = useState([]);
   const [annonceMois, setAnnonceMois] = useState([]);
@@ -51,16 +47,20 @@ const StatAnnuel = () => {
 
   useEffect(() => {
     const newEndPoint = `stat_annuel/${selectedYear}`;
-    console.log(newEndPoint);
+    //console.log(newEndPoint);
     axios.get(`${url}${newEndPoint}`, getHeaderToken())
       .then(response => {
         // ... traitement de la réponse ...
+        console.log("taftftaftafatfatafa")
         if (response.data.error === "aucun") {
           setDataParAnnee(response.data);
           const { users, revenuMensuels, annonceMois } = separerDonnees(response.data);
           setUsers(users);
           setRevenuMensuels(revenuMensuels);
           setAnnonceMois(annonceMois);
+          setLoading(false);
+          //alert(loading);
+          
         }
       })
       .catch(error => {
@@ -68,13 +68,19 @@ const StatAnnuel = () => {
         handleRequestError(error);
       });
   }, [url, selectedYear, getHeaderToken]);
+
+
+  function getMonthLetter(monthNumber) {
+    var months = ['Janvier','Fevrier','Mars','Avril','Mais','Juin','Juillet','Aout','Septembre','Octobre','Novembre','Decembre'];
+    return months[monthNumber - 1];
+  }
   
   
   
   function transformerUsers(users) {
     return users.map(user => {
       return {
-        mois: user.mois,
+        mois: getMonthLetter( user.mois ),
         nbUser: user.nbUsers
       };
     });
@@ -83,7 +89,7 @@ const StatAnnuel = () => {
   function transformerAnnonce(Annonces) {
     return Annonces.map(Annonce => {
       return {
-        mois: Annonce.mois,
+        mois: getMonthLetter( Annonce.mois ),
         nbAnnonce: Annonce.nbAnnonce
       };
     });
@@ -91,7 +97,7 @@ const StatAnnuel = () => {
   function transformerrevenuMensuelsNbCommition(revenuMensuels) {
     return revenuMensuels.map(revenue => {
       return {
-        mois: revenue.mois,
+        mois: getMonthLetter( revenue.mois ),
         nbCommission: revenue.nbCommission
       };
     });
@@ -100,7 +106,7 @@ const StatAnnuel = () => {
   function transformerrevenuMensuelstotalCommission(revenuMensuels) {
     return revenuMensuels.map(totalCommission => {
       return {
-        mois: totalCommission.mois,
+        mois: getMonthLetter( totalCommission.mois ),
         totalCommission: totalCommission.totalCommission
       };
     });
@@ -111,7 +117,7 @@ const StatAnnuel = () => {
   const revenuMensuelsNbCommition = transformerrevenuMensuelsNbCommition(revenuMensuels);
   const revenuMensuelstotalCommission = transformerrevenuMensuelstotalCommission(revenuMensuels);
   
-// console.log(usersData);
+  console.log(usersData);
   const handleYearChange = (e) => {
   };
   
@@ -121,9 +127,10 @@ const StatAnnuel = () => {
   
     if (!isNaN(yearInputValue) && yearInputValue >= 1950 && yearInputValue <= new Date().getFullYear()) {
       setSelectedYear(yearInputValue);
+      setLoading(true);
       console.log('Année sélectionnée : ' + yearInputValue);
     } else {
-      console.log('Veuillez entrer une année valide.');
+      alert('Veuillez entrer une année valide.');
     }
   };
   
@@ -155,48 +162,111 @@ const StatAnnuel = () => {
       <Row style={{ marginTop: '100px' }}>
         <Col>
           <Card className='shadow'>
+          <CardHeader className="bg-transparent">
+          <h5 style={{ textAlign: 'center' }}>Nombre d'utilisateurs</h5>
             <div className={styles.StatTest}>
-              <VictoryChart theme={VictoryTheme.material} domainPadding={20}>
-                <VictoryAxis />
-                <VictoryAxis dependentAxis />
-                <VictoryBar data={usersData} x="mois" y="nbUser" />
+              {loading ? (
+                <Row>
+                  <Col></Col>
+                  <Col><Loader type="TailSpin" color="#32325d" height={80} width={80} /></Col>
+                  <Col></Col>
+                </Row>
+                  
+                ) : (
+              <VictoryChart theme={VictoryTheme.material} domainPadding={10}>
+                {/* <VictoryAxis /> */}
+                <VictoryAxis 
+                 tickLabelComponent={<VictoryLabel angle={-45} y={320} />}
+                  
+                />
+                <VictoryAxis dependentAxis  />
+                <VictoryBar data={usersData}  x='mois' y="nbUser" />
               </VictoryChart>
+              )}
             </div>
+            </CardHeader>
           </Card>
         </Col>
+
         <Col>
           <Card className='shadow'>
+          <CardHeader className="bg-transparent">
+          <h5 style={{ textAlign: 'center' }}>Nombre d'annonces</h5>
             <div className={styles.StatTest}>
+            {loading ? ( 
+                <Row>
+                  <Col></Col>
+                  <Col><Loader type="TailSpin" color="#32325d" height={80} width={80} /></Col>
+                  <Col></Col>
+                </Row>
+                  
+             ) : (
               <VictoryChart theme={VictoryTheme.material} domainPadding={20}>
-                <VictoryAxis />
+                <VictoryAxis  
+                  tickLabelComponent={<VictoryLabel angle={-45} y={320} />}
+                />
                 <VictoryAxis dependentAxis />
                 <VictoryBar data={AnnoncesData} x="mois" y="nbAnnonce" />
               </VictoryChart>
+            )}
             </div>
+          </CardHeader>
           </Card>
+        
         </Col>
+
       </Row>
+      <br></br>
       <Row>
         <Col>
           <Card className='shadow'>
-            <div className={styles.StatTest}>
-              <VictoryChart theme={VictoryTheme.material} domainPadding={20}>
-                <VictoryAxis />
-                <VictoryAxis dependentAxis />
-                <VictoryBar data={revenuMensuelsNbCommition} x="mois" y="nbCommission" />
-              </VictoryChart>
-            </div>
+            <CardHeader className="bg-transparent">
+            <h5 style={{ textAlign: 'center' }}>Nombre de commission obtenus</h5>
+              <div className={styles.StatTest}>
+                {loading ? ( 
+                  <Row>
+                    <Col></Col>
+                    <Col><Loader type="TailSpin" color="#32325d" height={80} width={80} /></Col>
+                    <Col></Col>
+                  </Row>
+                    
+                ) : (
+                <VictoryChart theme={VictoryTheme.material} domainPadding={20}>
+                  <VictoryAxis 
+                    tickLabelComponent={<VictoryLabel angle={-45} y={320} />}
+                  />
+                  <VictoryAxis dependentAxis />
+                  <VictoryBar data={revenuMensuelsNbCommition} x="mois" y="nbCommission" />
+                </VictoryChart>
+                )}
+              </div>
+            </CardHeader>
           </Card>
         </Col>
+
         <Col>
           <Card className='shadow'>
+          <CardHeader className="bg-transparent">
+          <h5 style={{ textAlign: 'center' }}>Total revenus des commissions</h5>
             <div className={styles.StatTest}>
+            {loading ? ( 
+                  <Row>
+                    <Col></Col>
+                    <Col><Loader type="TailSpin" color="#32325d" height={80} width={80} /></Col>
+                    <Col></Col>
+                  </Row>
+                    
+                ) : (
               <VictoryChart theme={VictoryTheme.material} domainPadding={20}>
-                <VictoryAxis />
+                <VictoryAxis 
+                  tickLabelComponent={<VictoryLabel angle={-45} y={320} />}
+                />
                 <VictoryAxis dependentAxis />
                 <VictoryBar data={revenuMensuelstotalCommission} x="mois" y="totalCommission" />
               </VictoryChart>
+              )}
             </div>
+            </CardHeader>
           </Card>
         </Col>
       </Row>
