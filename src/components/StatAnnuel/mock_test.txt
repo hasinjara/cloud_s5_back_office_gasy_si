@@ -1,0 +1,204 @@
+const dataParAnnee = `{
+    "error": "aucun",
+    "message": "Reussi",
+    "data": {
+        "users": [
+            {
+                "nbUsers": 0,
+                "anne": 2023,
+                "mois": 1
+            },
+            {
+                "nbUsers": 0,
+                "anne": 2023,
+                "mois": 2
+            },
+            {
+              "nbUsers": 0,
+                "anne": 2023,
+                "mois": 3
+            },
+            {
+                "nbUsers": 0,
+                "anne": 2023,
+                "mois": 4
+            },
+            {
+                "nbUsers": 0,
+                "anne": 2023,
+                "mois": 5
+            },
+            {
+                "nbUsers": 0,
+                "anne": 2023,
+                "mois": 6
+            },
+            {
+                "nbUsers": 0,
+                "anne": 2023,
+                "mois": 7
+            },
+            {
+                "nbUsers": 0,
+                "anne": 2023,
+                "mois": 8
+            },
+            {
+                "nbUsers": 0,
+                "anne": 2023,
+                "mois": 9
+            },
+            {
+                "nbUsers": 0,
+                "anne": 2023,
+                "mois": 10
+            },
+            {
+                "nbUsers": 0,
+                "anne": 2023,
+                "mois": 11
+            },
+            {
+                "nbUsers": 0,
+                "anne": 2023,
+                "mois": 12
+            }
+        ],
+        "revenuMensuels": [
+            {
+                "nbCommission": 0,
+                "totalCommission": 0.0,
+                "anne": 2023,
+                "mois": 1
+            },
+            {
+                "nbCommission": 0,
+                "totalCommission": 0.0,
+                "anne": 2023,
+                "mois": 2
+            },
+            {
+                "nbCommission": 0,
+                "totalCommission": 0.0,
+                "anne": 2023,
+                "mois": 3
+            },
+            {
+                "nbCommission": 0,
+                "totalCommission": 0.0,
+                "anne": 2023,
+                "mois": 4
+            },
+            {
+                "nbCommission": 0,
+                "totalCommission": 0.0,
+                "anne": 2023,
+                "mois": 5
+            },
+            {
+                "nbCommission": 0,
+                "totalCommission": 0.0,
+                "anne": 2023,
+                "mois": 6
+            },
+            {
+                "nbCommission": 0,
+                "totalCommission": 0.0,
+                "anne": 2023,
+                "mois": 7
+            },
+            {
+                "nbCommission": 0,
+                "totalCommission": 0.0,
+                "anne": 2023,
+                "mois": 8
+            },
+            {
+                "nbCommission": 0,
+                "totalCommission": 0.0,
+                "anne": 2023,
+                "mois": 9
+            },
+            {
+                "nbCommission": 0,
+                "totalCommission": 0.0,
+                "anne": 2023,
+                "mois": 10
+            },
+            {
+                "nbCommission": 0,
+                "totalCommission": 0.0,
+                "anne": 2023,
+                "mois": 11
+            },
+            {
+                "nbCommission": 0,
+                "totalCommission": 0.0,
+                "anne": 2023,
+                "mois": 12
+            }
+        ],
+        "annonceMois": [
+            {
+                "nbAnnonce": 0,
+                "anne": 2023,
+                "mois": 1
+            },
+            {
+                "nbAnnonce": 0,
+                "anne": 2023,
+                "mois": 2
+            },
+            {
+                "nbAnnonce": 0,
+                "anne": 2023,
+                "mois": 3
+            },
+            {
+                "nbAnnonce": 0,
+                "anne": 2023,
+                "mois": 4
+            },
+            {
+                "nbAnnonce": 0,
+                "anne": 2023,
+                "mois": 5
+            },
+            {
+                "nbAnnonce": 0,
+                "anne": 2023,
+                "mois": 6
+            },
+            {
+                "nbAnnonce": 0,
+                "anne": 2023,
+                "mois": 7
+            },
+            {
+                "nbAnnonce": 0,
+                "anne": 2023,
+                "mois": 8
+            },
+            {
+                "nbAnnonce": 0,
+                "anne": 2023,
+                "mois": 9
+            },
+            {
+                "nbAnnonce": 0,
+                "anne": 2023,
+                "mois": 10
+            },
+            {
+                "nbAnnonce": 0,
+                "anne": 2023,
+                "mois": 11
+            },
+            {
+                "nbAnnonce": 0,
+                "anne": 2023,
+                "mois": 12
+            }
+        ]
+    }
+  }`;

@@ -26,6 +26,7 @@ const StatAnnuel = () => {
   const { url, getHeaderToken, getToken, getHeaderTokenTest, handleRequestError } = useAuth();
 
   function separerDonnees(jsonData) {
+    // const donnees = JSON.parse(jsonData);
     const donnees = jsonData;
     const users = donnees.data.users;
     const revenuMensuels = donnees.data.revenuMensuels;
@@ -33,44 +34,55 @@ const StatAnnuel = () => {
     return { users, revenuMensuels, annonceMois };
   }
 
-  
+
 
   const [dataParAnnee, setDataParAnnee] = useState(null);
   const [chartData, setChartData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
+  const [selectedYear, setSelectedYear] = useState(null);
   const [state, setState] = useState({
     chartData: null,
     loading: true
   })
-  const [users, setUsers] = useState([]);
-  const [revenuMensuels, setRevenuMensuels] = useState([]);
-  const [annonceMois, setAnnonceMois] = useState([]);
-  const anneeActuelle = new Date().getFullYear();
-  const [endPoint,setEndPoint] = useState("");
 
+  const endpoint = "stat_annuel/" + 2024;
+  const fetchData = () => {
+    alert("1");
+    axios.get("https://devvoitures5backend-production.up.railway.app/stat_annuel/2024", {
+      headers: {
+        // 'Content-Type': 'application/json',
+        Authorization: `Bearer ${getToken()}`,
+      },
+    }).then((response) => {
+      alert(response);
+      if (!response.data || !response.data.data) {
+        console.error('No data received or data structure is incorrect.');
+        return;
+      }
+
+      const data = response.data.data;
+      setDataParAnnee(response.data);
+      setChartData(data);
+      setLoading(false)
+      setState((state) => ({
+        ...state,
+        chartData: data,
+        loading: false
+      }))
+    }).catch((err) => {
+      console.log(err);
+      setState((state) => ({
+        ...state,
+        loading: false
+      }))
+    })
+  }
   useEffect(() => {
-    const newEndPoint = `stat_annuel/${selectedYear}`;
-    console.log(newEndPoint);
-    axios.get(`${url}${newEndPoint}`, getHeaderToken())
-      .then(response => {
-        // ... traitement de la réponse ...
-        if (response.data.error === "aucun") {
-          setDataParAnnee(response.data);
-          const { users, revenuMensuels, annonceMois } = separerDonnees(response.data);
-          setUsers(users);
-          setRevenuMensuels(revenuMensuels);
-          setAnnonceMois(annonceMois);
-        }
-      })
-      .catch(error => {
-        console.error('Erreur de requête :', error);
-        handleRequestError(error);
-      });
-  }, [url, selectedYear, getHeaderToken]);
-  
-  
-  
+    fetchData();
+  }, [url, getToken()]);
+
+  const { users, revenuMensuels, annonceMois } = separerDonnees(dataParAnnee);
+  const anneeActuelle = new Date().getFullYear();
   function transformerUsers(users) {
     return users.map(user => {
       return {
@@ -110,23 +122,15 @@ const StatAnnuel = () => {
   const AnnoncesData = transformerAnnonce(annonceMois);
   const revenuMensuelsNbCommition = transformerrevenuMensuelsNbCommition(revenuMensuels);
   const revenuMensuelstotalCommission = transformerrevenuMensuelstotalCommission(revenuMensuels);
-  
-// console.log(usersData);
+
   const handleYearChange = (e) => {
   };
-  
+
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const yearInputValue = document.getElementById('yearInput').value;
-  
-    if (!isNaN(yearInputValue) && yearInputValue >= 1950 && yearInputValue <= new Date().getFullYear()) {
-      setSelectedYear(yearInputValue);
-      console.log('Année sélectionnée : ' + yearInputValue);
-    } else {
-      console.log('Veuillez entrer une année valide.');
-    }
+    setSelectedYear(e.target.value);
+    console.log('annee : ' + selectedYear);
   };
-  
+
 
   return (
     <Container className="mt--7" fluid>
@@ -137,6 +141,10 @@ const StatAnnuel = () => {
               <input
                 type="number"
                 id="yearInput"
+                value={selectedYear || ''}
+                onChange={handleYearChange}
+                min="1950"
+                max={anneeActuelle}
               />
             </Col>
             <Col>
@@ -164,7 +172,7 @@ const StatAnnuel = () => {
             </div>
           </Card>
         </Col>
-        <Col>
+        {/* <Col>
           <Card className='shadow'>
             <div className={styles.StatTest}>
               <VictoryChart theme={VictoryTheme.material} domainPadding={20}>
@@ -198,7 +206,7 @@ const StatAnnuel = () => {
               </VictoryChart>
             </div>
           </Card>
-        </Col>
+        </Col> */}
       </Row>
     </Container>
 
