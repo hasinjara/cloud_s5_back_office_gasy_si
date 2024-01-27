@@ -130,8 +130,8 @@ return (
           <form onSubmit={handleSubmit}>
           <p>Choix de ses categories</p>
             <div style={{display: "flex",
-    height: "auto",
-    justifyContent: "space-evenly"}}>
+            height: "auto",
+            justifyContent: "space-evenly"}}>
       
               {categories.map((category) => (
                 <p>
