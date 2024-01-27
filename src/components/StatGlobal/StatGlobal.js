@@ -225,7 +225,7 @@ const StatGlobal= () => {
               </CardHeader> 
             </Card> 
           </Col>
-
+          
           {/* <Col className="">
             <Card className="shadow">
               <CardHeader className="bg-transparent">

@@ -37,6 +37,15 @@ export const AuthProvider = ({ children }) => {
             }
         };
     };
+    const getHeaderTokenTest = () => {
+        const token = getToken() + "1"; // Assurez-vous que la fonction getToken() est définie et retourne le token
+        return {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        };
+    };
     const getidUser = () => {
         const userInfoString = localStorage.getItem('userInfo');
         if (userInfoString) {
@@ -70,8 +79,38 @@ export const AuthProvider = ({ children }) => {
         setUserInfo(null);
     };
 
+    function estUnNombre(input) {
+        const nombre = parseFloat(input);
+        return !isNaN(nombre) && isFinite(nombre);
+    }
+    function estNegatif(nombre) {
+        return nombre < 0;
+    }
+    function contientUniquementLettresEtChiffres(chaine) {
+        return /^[A-Za-z0-9]*$/.test(chaine);
+    }
+    function contientCaractereSpecial(chaine) {
+        return /[^A-Za-z0-9]/.test(chaine);
+    }
+    function NeContientPasCharactereSpecial(chaine) {
+        return contientUniquementLettresEtChiffres(chaine)
+    }
+    function getStatusError(error) {
+        return error.response.status
+    }
+    function handleRequestError(error) {
+        if (error.response.status == 500) {
+            logout();
+        }
+        console.log("Détails de l'erreur : ", error.response.data);
+        if (error.request) {
+            console.log("Erreur de requête : ", error.request);
+            console.log("Message d'Erreur : ", error.message);
+        }
+    }
+    const anneeActuelle = new Date().getFullYear();
     return (
-        <AuthContext.Provider value={{ authToken, url, userInfo, getToken, getidUser, InitializeUserInfo, DestructUserInfo, login, logout, InitializeToken, DestructToken, getHeaderToken }}>
+        <AuthContext.Provider value={{ anneeActuelle, authToken, url, userInfo,handleRequestError,getHeaderTokenTest, NeContientPasCharactereSpecial, estNegatif, estUnNombre, getToken, getidUser, InitializeUserInfo, DestructUserInfo, login, logout, InitializeToken, DestructToken, getHeaderToken }}>
             {children}
         </AuthContext.Provider>
     );
