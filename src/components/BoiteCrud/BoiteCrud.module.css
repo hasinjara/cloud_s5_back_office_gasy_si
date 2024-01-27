@@ -1,4 +1,4 @@
-.VoitureCrud {
+.BoiteCrud {
     display: flex; /* Ajustez selon la mise en page souhaitée */
     flex-direction: column;
     align-items: center;
@@ -15,17 +15,17 @@
 }
 
 
-.VoitureCrud h2 {
+.BoiteCrud h2 {
     color: #333;
     margin-bottom: 20px;
 }
 
-.VoitureCrud form {
+.BoiteCrud form {
     width: 100%;
     margin-bottom: 20px;
 }
 
-.VoitureCrud input, .VoitureCrud select {
+.BoiteCrud input, .BoiteCrud select {
     width: calc(100% - 20px);
     padding: 10px;
     margin-bottom: 10px;
@@ -33,7 +33,7 @@
     border-radius: 4px;
 }
 
-.VoitureCrud button {
+.BoiteCrud button {
     width: auto;
     padding: 10px 15px;
     background-color: #4CAF50;
@@ -44,22 +44,36 @@
     transition: background-color 0.3s;
 }
 
-.VoitureCrud button:hover {
+.BoiteCrud button:hover {
     background-color: #fe6600;
 }
 
 
+.BoiteCrud .btn.del-btn {
+    background-color: #ff0000; /* Couleur de fond du bouton (rouge tomate) */
+    color: #ffffff; /* Couleur du texte (blanc) */
+    border: none; /* Supprimer la bordure */
+    padding: 10px 15px; /* Ajuster le padding */
+    border-radius: 4px; /* Rayon de la bordure pour des coins arrondis */
+    cursor: pointer; /* Style du curseur */
+    transition: background-color 0.3s; /* Transition pour le survol */
+}
+
+.BoiteCrud .btn.del-btn:hover {
+    background-color: #e55347; /* Couleur de fond au survol */
+}
+
 /* Styles pour le tableau, si nécessaire */
-.VoitureCrud table {
+.BoiteCrud table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.VoitureCrud table, .VoitureCrud th, .VoitureCrud td {
+.BoiteCrud table, .BoiteCrud th, .BoiteCrud td {
     border: 1px solid #ddd;
 }
 
-.VoitureCrud th, .VoitureCrud td {
+.BoiteCrud th, .BoiteCrud td {
     padding: 8px;
     text-align: left;
 }

@@ -61,6 +61,11 @@ const Admin = (props) => {
           {...props}
           brandText={getBrandText(props?.location?.pathname)}
         />
+        <Header />
+        {/* <div className="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+            <div className="container-fluid">
+            </div>
+        </div> */}
         <Routes>
           {getRoutes(routes)}
           <Route path="*" element={<Navigate to="/admin/index" replace />} />

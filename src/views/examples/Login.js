@@ -15,9 +15,9 @@ import {
 } from "reactstrap";
 import axios from 'axios';
 import { AuthProvider, useAuth } from "../../AuthContext";
-import { useLocation, Route, Routes, Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'assets/css/login.css'
 const Login = () => {
   const navigate = useNavigate();
   const { login, url , getidUser} = useAuth();
@@ -66,55 +66,26 @@ const Login = () => {
 
   return (
     <>
-      <Col lg="5" md="7">
-        <Card className="bg-secondary shadow border-0">
-          <CardHeader className="bg-transparent pb-5">
+    <div class="container">
+      <div style={{padding: 81}} className="boite">
+      <div class="row">
+        <div class="col-md-6" id="image">
+        
+        </div>
+        <div class="col-md-6" id="formulaire" style={{padding:0}}>
+        <Card className="card">
+          <CardHeader className="bg-transparent pb-5" style={{height: 124,border: "none"}}>
             <div className="text-muted text-center mt-2 mb-3">
-              <small>Sign in with</small>
-            </div>
-            <div className="btn-wrapper text-center">
-              <Button
-                className="btn-neutral btn-icon"
-                color="default"
-                href="https://github.com/Hasinjara/web_back_office_s5_cloud-main"
-                // onClick={(e) => e.preventDefault()}
-              >
-                <span className="btn-inner--icon">
-                  <img
-                    alt="..."
-                    src={
-                      require("../../assets/img/icons/common/github.svg")
-                        .default
-                    }
-                  />
-                </span>
-                <span className="btn-inner--text">Github</span>
-              </Button>
-              <Button
-                className="btn-neutral btn-icon"
-                color="default"
-                href="#pablo"
-                onClick={(e) => e.preventDefault()}
-              >
-                <span className="btn-inner--icon">
-                  <img
-                    alt="..."
-                    src={
-                      require("../../assets/img/icons/common/google.svg")
-                        .default
-                    }
-                  />
-                </span>
-                <span className="btn-inner--text">Google</span>
-              </Button>
+                    <img style={{width: 54}} alt="..." src={require("../../assets/img/icons/common/logo_simple_black.png")}
+                  /><br/>
+              <h3>Admin</h3>
             </div>
           </CardHeader>
-          <CardBody className="px-lg-5 py-lg-5">
-            <div className="text-center text-muted mb-4">
-              <small>Or sign in with credentials</small>
-            </div>
+          <CardBody className="px-lg-5">
+           
             <Form role="form">
               <FormGroup className="mb-3">
+                <label for="password">E-mail</label>
                 <InputGroup className="input-group-alternative">
                   <InputGroupAddon addonType="prepend">
                     <InputGroupText>
@@ -131,6 +102,7 @@ const Login = () => {
                 </InputGroup>
               </FormGroup>
               <FormGroup>
+                <label for="password">Mot de passe</label>
                 <InputGroup className="input-group-alternative">
                   <InputGroupAddon addonType="prepend">
                     <InputGroupText>
@@ -146,7 +118,7 @@ const Login = () => {
                   />
                 </InputGroup>
               </FormGroup>
-              <div className="custom-control custom-control-alternative custom-checkbox">
+              {/* <div className="custom-control custom-control-alternative custom-checkbox">
                 <input
                   className="custom-control-input"
                   id="customCheckLogin"
@@ -160,20 +132,61 @@ const Login = () => {
                 >
                   <span className="text-muted">Remember me</span>
                 </label>
-              </div>
+              </div> */}
+              <br/>
+              <div className="btn-wrapper text-center">
+              <Button
+                style={{boxShadow:"none"}}
+                className="btn-neutral btn-icon"
+                color="default"
+              >
+                <span className="btn-inner--icon">
+                  <img style={{width: 30}}
+                    alt="..."
+                    src={
+                      require("../../assets/img/icons/common/github.svg")
+                        .default
+                    }
+                  />
+                </span>
+              </Button>
+              <Button
+                style={{boxShadow:"none"}}
+                className="btn-neutral btn-icon"
+                color="default"
+              >
+                <span className="btn-inner--icon">
+                  <img style={{width: 30}}
+                    alt="..."
+                    src={
+                      require("../../assets/img/icons/common/google.svg")
+                        .default
+                    }
+                  />
+                </span>
+              </Button>
+            </div>
+            <br/>
               <div className="text-center">
                 <Button
-                  className="my-4"
-                  color="primary"
+                  class="btn btn-primary"
+                  id="valider"
                   type="button"
                   onClick={handleSignIn}
                 >
-                  Sign in
+                  Connexion
                 </Button>
               </div>
             </Form>
           </CardBody>
         </Card>
+        </div>
+      </div>
+      </div>
+    </div>
+{/*       
+      <Col lg="4" md="7">
+
         <Row className="mt-3">
           <Col xs="6">
             <a
@@ -194,14 +207,7 @@ const Login = () => {
             </a>
           </Col>
         </Row>
-        {/* {submitted && (
-          <div>
-            <p>Email: {email}</p>
-            <p>Password: {password}</p>
-            <p>Remember Me: {rememberMe ? "true" : "false"}</p>
-          </div>
-        )} */}
-      </Col>
+      </Col> */}
     </>
   );
 };

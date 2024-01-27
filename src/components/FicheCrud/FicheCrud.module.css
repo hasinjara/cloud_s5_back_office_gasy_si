@@ -1,11 +1,11 @@
-.VoitureCrud {
+.FicheCrud {
     display: flex; /* Ajustez selon la mise en page souhaitée */
     flex-direction: column;
     align-items: center;
     padding: 20px;
     margin: 20px auto;
     margin-bottom: 100px;
-    max-width: 80%;
+    max-width: 90%;
     position: relative; /* Ajouté pour que 'top' ait un effet */
     top: 50px;
     background-color: #ffffff;
@@ -14,18 +14,17 @@
     font-family: Arial, sans-serif;
 }
 
-
-.VoitureCrud h2 {
+.FicheCrud h2 {
     color: #333;
     margin-bottom: 20px;
 }
 
-.VoitureCrud form {
+.FicheCrud form {
     width: 100%;
     margin-bottom: 20px;
 }
 
-.VoitureCrud input, .VoitureCrud select {
+.FicheCrud input, .FicheCrud select {
     width: calc(100% - 20px);
     padding: 10px;
     margin-bottom: 10px;
@@ -33,7 +32,7 @@
     border-radius: 4px;
 }
 
-.VoitureCrud button {
+.FicheCrud button {
     width: auto;
     padding: 10px 15px;
     background-color: #4CAF50;
@@ -44,22 +43,21 @@
     transition: background-color 0.3s;
 }
 
-.VoitureCrud button:hover {
+.FicheCrud button:hover {
     background-color: #fe6600;
 }
 
-
 /* Styles pour le tableau, si nécessaire */
-.VoitureCrud table {
+.FicheCrud table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.VoitureCrud table, .VoitureCrud th, .VoitureCrud td {
+.FicheCrud table, .FicheCrud th, .FicheCrud td {
     border: 1px solid #ddd;
 }
 
-.VoitureCrud th, .VoitureCrud td {
+.FicheCrud th, .FicheCrud td {
     padding: 8px;
     text-align: left;
 }
