@@ -12,7 +12,6 @@ import MarqueCrud from "./components/MarqueCrud/MarqueCrud";
 import CategorieCrud from "./components/CategorieCrud/CategorieCrud";
 import BoiteCrud from "./components/BoiteCrud/BoiteCrud";
 import EnergieCrud from "./components/EnergieCrud/EnergieCrud";
-import VoitureCrud from "./components/VoitureCrud/VoitureCrud";
 import FicheCrud from "./components/FicheCrud/FicheCrud";
 import StatGlobal from "components/StatGlobal/StatGlobal";
 

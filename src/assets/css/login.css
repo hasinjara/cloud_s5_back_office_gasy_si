@@ -1,0 +1,43 @@
+*{
+    color: white;
+}
+.container{
+    /* border:1px solid black; */
+    position: fixed;
+    top: 50px;
+}
+.row{
+    /* border:1px solid black; */
+}
+.card{
+    border: none;
+}
+#valider{
+    width: 100%;
+    background-color: black;
+    border-radius: 50px;
+}
+label{
+    color:black;
+    font-size: x-small;
+    opacity: 0.8;
+}
+#image{
+    /* border:1px solid black; */
+background-image: url('../img/fond_admin.jpg');
+background-size: cover;
+background-position: center;
+border-radius: 44px;
+}
+#formulaire{
+    padding: 0;
+}
+.image{
+    width: 30px;
+}
+.boite{
+    border-radius: 42px;
+background: #ffffff;
+box-shadow:  5px 5px 10px #e6e6e6,
+             -5px -5px 10px #ffffff;
+}
