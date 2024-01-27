@@ -23,6 +23,7 @@ import AnnonceNonValid from "views/examples/AnnonceNonValid";
 import AnnonceRefus from "views/examples/AnnonceRefus";
 import StatTest from "components/StatTest/StatTest";
 import StatAnnuel from "components/StatAnnuel/StatAnnuel";
+import StatMensuel from "components/StatMensuel/StatMensuel";
 
 var routes = [
   {
@@ -140,6 +141,13 @@ var routes = [
     name: "Stat Annuel",
     icon: "bi bi-bar-chart",
     component: <StatAnnuel />,
+    layout: "/admin",
+  },
+  {
+    path: "/statmensuel",
+    name: "Stat Mensuel",
+    icon: "bi bi-bar-chart",
+    component: <StatMensuel />,
     layout: "/admin",
   },
 ];
