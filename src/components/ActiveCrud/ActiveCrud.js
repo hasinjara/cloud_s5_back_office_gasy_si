@@ -50,7 +50,7 @@ const ActiveCrud = (props) => {
       .catch(error => {
         console.error('Erreur de requête signing :', error);
       });
-  }, [url, getEndPoint, getHeaderToken]);
+  }, [url, getEndPoint, getHeaderToken()]);
 
   const handleChange = (e, fieldName) => {
     setFormData({ ...formData, [fieldName]: e.target.value });
@@ -159,6 +159,7 @@ const updateItem = (index) => {
 
 
   return (
+
     <div className={styles.ActiveCrud}>
       <h1>{formName}</h1>
       <form onSubmit={handleSubmit}>
@@ -167,8 +168,12 @@ const updateItem = (index) => {
           if (index === 0) return null;
   
           return (
+            
             <div key={index}>
-              <label style={{ color: 'grey' }}>{field.label}</label>
+              <br/>
+              <h3>Insertion de {field.label}</h3>
+              <br/>
+              <label style={{ color: 'grey' }}>Nom de la {field.label}</label>
               <input
                 type={field.type}
                 value={formData[field.name] || ''}
@@ -178,11 +183,12 @@ const updateItem = (index) => {
             </div>
           );
         })}
+        <br/>
         <button type="submit" className="btn save-btn">
           {editingIndex !== -1 ? 'Update' : 'Save'}
         </button>
       </form>
-
+      <br/>
       <table className="crud-table">
         <thead>
           <tr>
@@ -207,7 +213,6 @@ const updateItem = (index) => {
                     item[field.name]
                   )}
                   {/* {console.log( )} */}
-
                 </td>
               ))}
               <td>
@@ -216,11 +221,11 @@ const updateItem = (index) => {
                     Update
                   </button>
                 ) : (
-                  <button className="btn save-btn" onClick={() => handleEditClick(index)}>
+                  <button style={{backgroundColor:'black'}}  onClick={() => handleEditClick(index)}>
                     Edit
                   </button>
                 )}
-                <button className="btn del-btn" onClick={() => handleOperation('delete', index)}>
+                <button class="delete" style={{backgroundColor: 'red'}} onClick={() => handleOperation('delete', index)}>
                   Delete
                 </button>
               </td>

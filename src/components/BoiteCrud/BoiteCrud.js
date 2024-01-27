@@ -32,7 +32,6 @@ const BoiteCrud = (props) => {
   const { login, url, getidUser, getHeaderToken } = useAuth();
   return (
     <>
-      <Header />
       <div className={styles.BoiteCrud}>
         <Container className="mt--7" fluid>
           <ActiveCrud primaryKeyFieldName={'idBoite'} getEndPoint={'boite'} postEndPoint={'boite'} putEndPoint={'boite'} delEndPoint={'boite'} />

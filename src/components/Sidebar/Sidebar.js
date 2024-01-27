@@ -34,11 +34,20 @@ import {
   Row,
   Col,
 } from "reactstrap";
-
+import { AuthProvider, useAuth } from "AuthContext"; 
+import {useNavigate} from 'react-router-dom';
 var ps;
 
 const Sidebar = (props) => {
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+  const handleLougout =() =>
+  {
+    logout();
+    navigate('index');
+  }
   const [collapseOpen, setCollapseOpen] = useState();
+
   // verifies if routeName is the one active (in browser input)
   const activeRoute = (routeName) => {
     return props.location.pathname.indexOf(routeName) > -1 ? "active" : "";
@@ -220,7 +229,7 @@ const Sidebar = (props) => {
 
           <Nav className="mb-md-3" navbar>
             <NavItem>
-              <NavLink href="#">
+              <NavLink onClick={handleLougout} style={{cursor: "pointer"}}>
                 <i className="bi bi-box-arrow-left" />
                 Deconnexion
               </NavLink>
