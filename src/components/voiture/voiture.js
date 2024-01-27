@@ -11,8 +11,7 @@ const Voiture = ({ value }) => {
   return(<>
   <td>{voiture.nomModele}</td>
   <td>{voiture.marque}</td>
-  <td>{voiture.anneSortie}</td>
-  <td><button class="btn btn-primary">Modifier</button></td>
+  <td style={{textAlign:"right"}}>{voiture.anneSortie}</td>
 </>
 );
 

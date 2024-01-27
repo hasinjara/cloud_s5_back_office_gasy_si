@@ -15,96 +15,131 @@ import EnergieCrud from "./components/EnergieCrud/EnergieCrud";
 import FicheCrud from "./components/FicheCrud/FicheCrud";
 import StatGlobal from "components/StatGlobal/StatGlobal";
 
+import AnnonceDetail from "views/examples/AnnonceDetail";
+import SearchRep from "views/examples/SearchRep";
+import AnnonceValid from "views/examples/AnnonceValid";
+import AnnonceVendu from "views/examples/AnnonceVendu";
+import AnnonceNonValid from "views/examples/AnnonceNonValid";
+import AnnonceRefus from "views/examples/AnnonceRefus";
+import StatTest from "components/StatTest/StatTest";
+import StatAnnuel from "components/StatAnnuel/StatAnnuel";
+
 var routes = [
   {
     path: "/index",
-    name: "Dashboard",
-    icon: "ni ni-tv-2 text-primary",
+    name: "Admin page",
+    icon: "bi bi-house",
     component: <Index />,
-    layout: "/admin",
-  },
-  {
-    path: "/icons",
-    name: "Icons",
-    icon: "ni ni-planet text-blue",
-    component: <Icons />,
-    layout: "/admin",
-  },
-  // {
-  //   path: "/maps",
-  //   name: "Maps",
-  //   icon: "ni ni-pin-3 text-orange",
-  //   component: <Maps />,
-  //   layout: "/admin",
-  // },
-  {
-    path: "/user-profile",
-    name: "User Profile",
-    icon: "ni ni-single-02 text-yellow",
-    component: <Profile />,
     layout: "/admin",
   },
   {
     path: "/Marque",
     name: "Marque",
-    icon: "ni ni-bullet-list-67 text-red",
+    icon: "bi bi-nut",
     component: <MarqueCrud />,
     layout: "/admin",
   },
   {
     path: "/Categorie",
     name: "Categorie",
-    icon: "ni ni-bullet-list-67 text-red",
+    icon: "bi bi-stickies",
     component: <CategorieCrud />,
     layout: "/admin",
   },
   {
     path: "/Boite",
     name: "Boite",
-    icon: "ni ni-bullet-list-67 text-red",
+    icon: "bi bi-box",
     component: <BoiteCrud />,
     layout: "/admin",
   },
   {
     path: "/Energie",
     name: "Energie",
-    icon: "ni ni-bullet-list-67 text-red",
+    icon: "bi bi-lightning-charge",
     component: <EnergieCrud />,
     layout: "/admin",
   },
   {
     path: "/Voiture",
     name: "Voiture",
-    icon: "bi bi-speedometer2",
+    icon: "bi bi-car-front",
     component: <VoitureCrud />,
     layout: "/admin",
   },
   {
     path: "/Fiche_technique",
     name: "Fiche technique",
-    icon: "ni ni-bullet-list-67 text-red",
+    icon: "bi bi-collection",
     component: <FicheCrud />,
     layout: "/admin",
   },
+  // {
+  //   path: "/crud",
+  //   name: "CRUD",
+  //   icon: "ni ni-books text-orange",
+  //   component: <ActiveCrud />,
+  //   layout: "/admin",
+  // },
   {
-    path: "/crud",
-    name: "CRUD",
-    icon: "ni ni-books text-orange",
-    component: <ActiveCrud />,
+    path: "/annonceValid",
+    name: "Annonces Validées",
+    icon: "bi bi-clipboard-check",
+    component: <AnnonceValid />,
     layout: "/admin",
   },
   {
-    path: "/annonce",
-    name: "Annonce",
-    icon: "ni ni-books text-orange",
+    path: "/annonceNonValid",
+    name: "Annonces Non Validées",
+    icon: "bi bi-clipboard-minus",
     component: <Annonce />,
+    layout: "/admin",
+  },
+  {
+    path: "/annonceVendu",
+    name: "Annonces Vendues",
+    icon: "bi bi-clipboard-plus",
+    component: <AnnonceVendu />,
+    layout: "/admin",
+  },
+  {
+    path: "/annonceRefus",
+    name: "Annonces Refusées",
+    icon: "bi bi-clipboard-x",
+    component: <AnnonceRefus />,
     layout: "/admin",
   },
   {
     path: "/statglobal",
     name: "Stat Global",
-    icon: "ni ni-books text-orange",
+    icon: "bi bi-clipboard-data",
     component: <StatGlobal />,
+    layout: "/admin",
+  },
+  
+  {
+    path: "/annonceDetail/:idAnnonce",
+    name: "AnnonceDetail",
+    icon: "bi bi-clipboard",
+    component: <AnnonceDetail />,
+    layout: "/admin",
+    hide: "true",
+  },
+
+  {
+    path: "/search",
+    name: "Search",
+    icon: "bi bi-search",
+    component: <SearchRep />,
+    layout: "/admin",
+    hide: "true",
+
+  },
+  {
+    path: "/statannuel",
+    name: "Stat Annuel",
+    icon: "bi bi-bar-chart",
+    component: <StatAnnuel />,
     layout: "/admin",
   },
 ];

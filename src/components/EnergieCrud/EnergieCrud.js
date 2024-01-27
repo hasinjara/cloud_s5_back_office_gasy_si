@@ -32,7 +32,6 @@ const EnergieCrud = (props) => {
   const { login, url, getidUser, getHeaderToken } = useAuth();
   return (
     <>
-      <Header />
       <div className={styles.EnergieCrud}>
         <Container className="mt--7" fluid>
           <ActiveCrud primaryKeyFieldName={'idEnergie'} getEndPoint={'energie'} postEndPoint={'energie'} putEndPoint={'energie'} delEndPoint={'energie'} />
