@@ -2,7 +2,7 @@
 import { useState } from "react";
 import classnames from "classnames";
 import Chart from "chart.js";
-import { Line, Bar } from "react-chartjs-2";
+// import { Line, Bar } from "react-chartjs-2";
 
 import {
   Button,
@@ -53,7 +53,7 @@ const Index = (props) => {
   
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Container className="mt--7" fluid>
         {/* <StaticCrud/> */}
         <ActiveCrud primaryKeyFieldName={'idMarque'} getEndPoint={'marque'} postEndPoint={'marque'} putEndPoint={'marque'} delEndPoint={'marque'} />
