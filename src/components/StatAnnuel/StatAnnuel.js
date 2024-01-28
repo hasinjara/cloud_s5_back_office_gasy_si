@@ -261,7 +261,7 @@ const StatAnnuel = () => {
                 <VictoryAxis 
                   tickLabelComponent={<VictoryLabel angle={-45} y={320} />}
                 />
-                <VictoryAxis dependentAxis />
+                <VictoryAxis dependentAxis  tickFormat={(tick) => `${tick / 100000}K`}/>
                 <VictoryBar data={revenuMensuelstotalCommission} x="mois" y="totalCommission" />
               </VictoryChart>
               )}
