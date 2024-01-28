@@ -200,90 +200,95 @@ const StatGlobal= () => {
     <>
       {/* <Header /> */}
       <Container className="mt--7" fluid> 
-      
-          <Col className="mb-5 mb-xl-0">
-            <Card className="shadow">
-              <CardHeader className="bg-transparent">
-                <h2 style={{ textAlign: 'center' }}>Nombre d'annonce par voiture</h2>
-                {state.loading ? (
-                  <Row>
-                  <Col></Col>
-                  <Col><Loader type="TailSpin" color="#32325d" height={80} width={80} /></Col>
-                  <Col></Col>
-                </Row>
-                ) : (
-                  
-                  <VictoryChart theme={VictoryTheme.material}
-                      domainPadding={10} >
-                      <VictoryAxis tickFormat={() => ''} />
-                      
-                      <VictoryAxis dependentAxis />
-                      
-                      <VictoryBar 
-                        data={dataVoiture}  
-                        labelComponent={<VictoryLabel angle={90} verticalAnchor="start" textAnchor="end" />}
-                      />
-
-                  </VictoryChart>
-                )}
-              </CardHeader> 
-            </Card> 
-          </Col>
-
-          <Col className="mb-5 mb-xl-0">
-            <Card className="shadow">
-              <CardHeader className="bg-transparent">
-                <h2 style={{ textAlign: 'center' }}>Nombre d'annonce par marque</h2>
-                {loading ? (
-                  <Row>
-                  <Col></Col>
-                  <Col><Loader type="TailSpin" color="#32325d" height={80} width={80} /></Col>
-                  <Col></Col>
-                </Row>
-                ) : (
-                  <VictoryChart theme={VictoryTheme.material}
-                    domainPadding={20} >
-                    <VictoryAxis tickFormat={() => ''} />
-                    <VictoryAxis dependentAxis />
-                    
-                    <VictoryBar 
-                      data={dataMarque}  
-                      labelComponent={<VictoryLabel angle={90} verticalAnchor="start" textAnchor="end" />}
-                    />
-
-                  </VictoryChart>
-                )}
-              </CardHeader> 
-            </Card> 
-          </Col>
-
-          <Col className="mb-5 mb-xl-0">
-            <Card className="shadow">
-              <CardHeader className="bg-transparent">
-                <h2 style={{ textAlign: 'center' }}>Nombre d'annonce par categorie</h2>
-                {loading ? (
-                  <Row>
+          <Row>
+            <Col className="mb-5 mb-xl-0">
+              <Card className="shadow">
+                <CardHeader className="bg-transparent">
+                  <h5 style={{ textAlign: 'center' }}>Nombre d'annonce par voiture</h5>
+                  {state.loading ? (
+                    <Row>
                     <Col></Col>
                     <Col><Loader type="TailSpin" color="#32325d" height={80} width={80} /></Col>
                     <Col></Col>
                   </Row>
-                ) : (
-                  <VictoryChart theme={VictoryTheme.material}
-                    domainPadding={20} >
-                   <VictoryAxis tickFormat={() => ''} />
-                    <VictoryAxis dependentAxis />
+                  ) : (
                     
-                    <VictoryBar 
-                      data={dataCateg}  
-  
-                      labelComponent={<VictoryLabel angle={90} verticalAnchor="start" textAnchor="end" />}
-                    />
+                    <VictoryChart theme={VictoryTheme.material}
+                        domainPadding={10} >
+                        <VictoryAxis tickFormat={() => ''} />
+                        
+                        <VictoryAxis dependentAxis />
+                        
+                        <VictoryBar 
+                          data={dataVoiture}  
+                          labelComponent={<VictoryLabel angle={90} verticalAnchor="start" textAnchor="end" />}
+                        />
 
-                </VictoryChart>
-                )}
-              </CardHeader> 
-            </Card> 
-          </Col>
+                    </VictoryChart>
+                  )}
+                </CardHeader> 
+              </Card> 
+            </Col>
+
+            <Col className="mb-5 mb-xl-0">
+              <Card className="shadow">
+                <CardHeader className="bg-transparent">
+                  <h5 style={{ textAlign: 'center' }}>Nombre d'annonce par marque</h5>
+                  {loading ? (
+                    <Row>
+                    <Col></Col>
+                    <Col><Loader type="TailSpin" color="#32325d" height={80} width={80} /></Col>
+                    <Col></Col>
+                  </Row>
+                  ) : (
+                    <VictoryChart theme={VictoryTheme.material}
+                      domainPadding={20} >
+                      <VictoryAxis tickFormat={() => ''} />
+                      <VictoryAxis dependentAxis />
+                      
+                      <VictoryBar 
+                        data={dataMarque}  
+                        labelComponent={<VictoryLabel angle={90} verticalAnchor="start" textAnchor="end" />}
+                      />
+
+                    </VictoryChart>
+                  )}
+                </CardHeader> 
+              </Card> 
+            </Col>
+          </Row>
+          
+          <Row style={{ marginTop: '100px' }} > 
+          <Col className="mb-5 mb-xl-0">
+              <Card className="shadow">
+                <CardHeader className="bg-transparent">
+                  <h5 style={{ textAlign: 'center' }}>Nombre d'annonce par categorie</h5>
+                  {loading ? (
+                    <Row>
+                      <Col></Col>
+                      <Col><Loader type="TailSpin" color="#32325d" height={80} width={80} /></Col>
+                      <Col></Col>
+                    </Row>
+                  ) : (
+                    <VictoryChart theme={VictoryTheme.material}
+                      domainPadding={20} >
+                    <VictoryAxis tickFormat={() => ''} />
+                      <VictoryAxis dependentAxis />
+                      
+                      <VictoryBar 
+                        data={dataCateg}  
+    
+                        labelComponent={<VictoryLabel angle={90} verticalAnchor="start" textAnchor="end" />}
+                      />
+
+                  </VictoryChart>
+                  )}
+                </CardHeader> 
+              </Card> 
+            </Col>
+            <Col></Col>
+          </Row>
+          
       
       </Container>
     </>
