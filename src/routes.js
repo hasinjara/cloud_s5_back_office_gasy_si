@@ -24,6 +24,7 @@ import AnnonceRefus from "views/examples/AnnonceRefus";
 import StatTest from "components/StatTest/StatTest";
 import StatAnnuel from "components/StatAnnuel/StatAnnuel";
 import StatMensuel from "components/StatMensuel/StatMensuel";
+import Commission from "components/Commission/Commission";
 
 var routes = [
   {
@@ -111,6 +112,13 @@ var routes = [
     layout: "/admin",
   },
   {
+    path: "/commission",
+    name: "Commission",
+    icon: "bi bi-credit-card",
+    component: <Commission />,
+    layout: "/admin",
+  },
+  {
     path: "/statglobal",
     name: "Stat Global",
     icon: "bi bi-clipboard-data",
@@ -136,6 +144,7 @@ var routes = [
     hide: "true",
 
   },
+
   {
     path: "/statannuel",
     name: "Stat Annuel",
@@ -150,5 +159,6 @@ var routes = [
     component: <StatMensuel />,
     layout: "/admin",
   },
+ 
 ];
 export default routes;
