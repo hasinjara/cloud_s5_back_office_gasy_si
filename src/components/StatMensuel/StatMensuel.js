@@ -20,6 +20,7 @@ import {
   Container,
   Row,
   Col,
+  Input
 } from "reactstrap";
 
 const generateRandomColor = () => {
@@ -37,7 +38,7 @@ const StatMensuel = () => {
   const [dataMensuel, setDataMensuel] = useState(null);
   const { url, getHeaderToken, getToken, getHeaderTokenTest, handleRequestError } = useAuth();
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
-  const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
+  const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1);
   const [endPoint,setEndPoint] = useState("");
   const [statMarqueMensuels, setStatMarqueMensuels] = useState([]);
   const [statCategorieMensuels, setStatCategorieMensuels] = useState([]);
@@ -56,8 +57,8 @@ const StatMensuel = () => {
 
 
   useEffect(() => {
-    //const newEndPoint = `stat_mensuel/${selectedMonth}/${selectedYear}`;
-    const newEndPoint = `stat_mensuel/1/2024`;
+    const newEndPoint = `stat_mensuel/${selectedMonth}/${selectedYear}`;
+    //const newEndPoint = `stat_mensuel/1/2024`;
     //console.log(newEndPoint);
     axios.get(`${url}${newEndPoint}`, getHeaderToken())
       .then(response => {
@@ -82,8 +83,12 @@ const StatMensuel = () => {
   }, [url, selectedYear, selectedMonth ,getHeaderToken]);
 
   const handleSubmit = () => {
-    const yearInput = document.getElementById("yearInput").value;
-    setSelectedYear(yearInput);
+    setLoading(true);
+    const yearInputValue = document.getElementById('yearInput').value;
+    const monthSelect = document.getElementById('monthSelect').value;
+    setSelectedYear(yearInputValue);
+    setSelectedMonth(monthSelect);
+    
   };
 
   const giveTitle = (text) => {
@@ -209,6 +214,7 @@ const dataCommissionVendeur = {
 };
 
 
+
   
 
   return (
@@ -217,17 +223,37 @@ const dataCommissionVendeur = {
         <Col>
           <Card className='shadow'>
             <Col>
-              <input
-                type="number"
-                id="yearInput"
-              />
+            <label htmlFor="yearInput">Année :</label>
+          <input
+            type="number"
+            id="yearInput"
+            value={selectedYear}
+          />
+
+          <label htmlFor="monthSelect">Mois :</label>
+          <select
+            id="monthSelect"
+          >
+            <option value={1}>Janvier</option>
+            <option value={2}>Février</option>
+            <option value={3}>Mars</option>
+            <option value={4}>Avril</option>
+            <option value={5}>Mai</option>
+            <option value={6}>Juin</option>
+            <option value={7}>Juillet</option>
+            <option value={8}>Août</option>
+            <option value={9}>Septembre</option>
+            <option value={10}>Octobre</option>
+            <option value={11}>Novembre</option>
+            <option value={12}>Décembre</option>
+          </select>
             </Col>
             <Col>
               <button onClick={handleSubmit} className='btn bn-primary' style={{ backgroundColor: "black", color: "white", fontSize: "smaller" }}> Submit</button>
             </Col>
             {selectedYear && (
               <div>
-                <h4>Année sélectionnée : {selectedYear}</h4>
+                <h4>Année sélectionnée : {selectedYear} {selectedMonth}</h4>
               </div>
             )}
           </Card>
@@ -236,7 +262,7 @@ const dataCommissionVendeur = {
       </Row>
       
       {/* Marque */}
-      <Row >
+      <Row style={{ marginTop: '100px' }} >
         <Col>
           <Card className='shadow'>
             <CardHeader className="bg-transparent">
@@ -278,7 +304,7 @@ const dataCommissionVendeur = {
 
 
       {/* Voiture */}
-      <Row >
+      <Row style={{ marginTop: '100px' }} >
         <Col>
           <Card className='shadow'>
             <CardHeader className="bg-transparent">
@@ -318,7 +344,7 @@ const dataCommissionVendeur = {
       </Row>
 
         {/* Categorie */}
-      <Row >
+      <Row style={{ marginTop: '100px' }} >
         <Col>
           <Card className='shadow'>
             <CardHeader className="bg-transparent">
@@ -359,7 +385,7 @@ const dataCommissionVendeur = {
 
 
        {/* Vendeur */}
-      <Row >
+      <Row style={{ marginTop: '100px' }} >
         <Col>
           <Card className='shadow'>
             <CardHeader className="bg-transparent">
