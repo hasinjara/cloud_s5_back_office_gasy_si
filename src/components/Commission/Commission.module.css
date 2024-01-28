@@ -1,0 +1,13 @@
+.Commission {
+
+}
+
+.table-with-border th,
+.table-with-border td {
+border: 1px solid #dddddd;
+padding: 8px;
+}
+
+.table-with-border th {
+background-color: #f2f2f2;
+}
