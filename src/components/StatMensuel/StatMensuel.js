@@ -78,6 +78,7 @@ const StatMensuel = () => {
       })
       .catch(error => {
         console.error('Erreur de requête :', error);
+        setLoading(false);
         handleRequestError(error);
       });
   }, [url, selectedYear, selectedMonth ,getHeaderToken]);
@@ -90,6 +91,11 @@ const StatMensuel = () => {
     setSelectedMonth(monthSelect);
     
   };
+
+  function getMonthLetter(monthNumber) {
+    var months = ['Janvier','Fevrier','Mars','Avril','Mais','Juin','Juillet','Aout','Septembre','Octobre','Novembre','Decembre'];
+    return months[monthNumber - 1];
+  }
 
   const giveTitle = (text) => {
     return {
@@ -222,43 +228,48 @@ const dataCommissionVendeur = {
       <Row style={{ marginTop: '100px' }}>
         <Col>
           <Card className='shadow'>
+            <Row>
             <Col>
-            <label htmlFor="yearInput">Année :</label>
-          <input
-            type="number"
-            id="yearInput"
-            value={selectedYear}
-          />
-
-          <label htmlFor="monthSelect">Mois :</label>
-          <select
-            id="monthSelect"
-          >
-            <option value={1}>Janvier</option>
-            <option value={2}>Février</option>
-            <option value={3}>Mars</option>
-            <option value={4}>Avril</option>
-            <option value={5}>Mai</option>
-            <option value={6}>Juin</option>
-            <option value={7}>Juillet</option>
-            <option value={8}>Août</option>
-            <option value={9}>Septembre</option>
-            <option value={10}>Octobre</option>
-            <option value={11}>Novembre</option>
-            <option value={12}>Décembre</option>
-          </select>
+                {/* <label htmlFor="yearInput">Année :</label> */}
+                <input className='form-control'
+                  type="number"
+                  id="yearInput"
+                  value={selectedYear}
+                />
+            </Col>
+            <Col>
+                {/* <label htmlFor="monthSelect">Mois :</label> */}
+                <select className='form-control'
+                  id="monthSelect"
+                >
+                  <option value={1}>Janvier</option>
+                  <option value={2}>Février</option>
+                  <option value={3}>Mars</option>
+                  <option value={4}>Avril</option>
+                  <option value={5}>Mai</option>
+                  <option value={6}>Juin</option>
+                  <option value={7}>Juillet</option>
+                  <option value={8}>Août</option>
+                  <option value={9}>Septembre</option>
+                  <option value={10}>Octobre</option>
+                  <option value={11}>Novembre</option>
+                  <option value={12}>Décembre</option>
+                </select>
             </Col>
             <Col>
               <button onClick={handleSubmit} className='btn bn-primary' style={{ backgroundColor: "black", color: "white", fontSize: "smaller" }}> Submit</button>
             </Col>
+            </Row>
+            
+            
             {selectedYear && (
               <div>
-                <h4>Année sélectionnée : {selectedYear} {selectedMonth}</h4>
+                <h4>Année sélectionnée : {selectedYear} { getMonthLetter( selectedMonth )}</h4>
               </div>
             )}
           </Card>
         </Col>
-        <Col></Col>
+        
       </Row>
       
       {/* Marque */}
