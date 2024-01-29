@@ -140,18 +140,22 @@ const StatAnnuel = () => {
       <Row style={{ marginTop: '100px' }} >
         <Col>
           <Card className='shadow'>
-            <Col>
-              <input
-                type="number"
-                id="yearInput"
-              />
-            </Col>
-            <Col>
-              <button onClick={handleSubmit} className='btn bn-primary' style={{ backgroundColor: "black", color: "white", fontSize: "smaller" }} > Submit</button>
-            </Col>
+            <Row>
+              <Col>
+                <input className='form-control'
+                  type="number"
+                  id="yearInput"
+                />
+              </Col>
+              
+              <Col>
+                <button onClick={handleSubmit} className='btn bn-primary' style={{ backgroundColor: "black", color: "white", fontSize: "smaller" }} > Submit</button>
+              </Col>
+            </Row>
+            
             {selectedYear && (
               <div>
-                <h4>Année sélectionnée : {selectedYear}</h4>
+                <p>Année sélectionnée : {selectedYear}</p>
               </div>
             )}
           </Card>
