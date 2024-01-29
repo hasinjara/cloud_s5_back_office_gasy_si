@@ -25,6 +25,7 @@ import StatTest from "components/StatTest/StatTest";
 import StatAnnuel from "components/StatAnnuel/StatAnnuel";
 import StatMensuel from "components/StatMensuel/StatMensuel";
 import Commission from "components/Commission/Commission";
+import ParamCommission from "components/ParamCommission/ParamCommission";
 
 var routes = [
   {
@@ -109,6 +110,13 @@ var routes = [
     name: "Annonces Refusées",
     icon: "bi bi-clipboard-x",
     component: <AnnonceRefus />,
+    layout: "/admin",
+  },
+  {
+    path: "/paramcommission",
+    name: "Marge Commission",
+    icon: "bi-gear-wide-connected",
+    component: <ParamCommission />,
     layout: "/admin",
   },
   {
