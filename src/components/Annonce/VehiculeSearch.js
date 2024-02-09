@@ -26,6 +26,9 @@ const params = new URLSearchParams(location.search);
 // Retrieve the encoded data from the URL parameter
 const encodedData = params.get('data');
 
+const divPhoto = { width: '100%', maxWidth: '500px' }
+const imgStyle = { width: '100%', height: '200px', objectFit: 'cover' }
+
 // Parse the encoded data back into an object
 const data = JSON.parse(decodeURIComponent(encodedData));
 
@@ -99,14 +102,14 @@ const data = JSON.parse(decodeURIComponent(encodedData));
                     </span> 
                   
                  </div> 
-                  <div> 
+                  <div style={divPhoto} >  
                     
-                      <img  
-                       alt="Fiat Panda" 
-                       src={require("../../assets/img/car/fiat-pande.png")} 
-                       width="300" 
-                       height="200" 
-                     /> 
+                  <img 
+                      alt={annonce.photos[0] ? "Car_"+annonce.photos[0].idAnnoncePhoto : "Car photo"}
+                      
+                      src={annonce.photos[0] ? annonce.photos[0].urlPhoto : require("../../assets/img/car/fiat-pande.png")}
+                      style={imgStyle}
+                    />
                   
 
                   </div> 

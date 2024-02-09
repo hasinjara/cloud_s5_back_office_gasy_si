@@ -37,6 +37,13 @@ const AnnonceDetail = () =>{
       width: '100vw', // 100% de la largeur de la fenêtre
     }
 
+    function getUnite(energie) {
+      if(energie == "Electrique") {
+        return "Kw/100 km";
+      }
+      return "L/100 km";
+    }
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -97,9 +104,9 @@ const AnnonceDetail = () =>{
       </div></>
 
     }
-      
 
-    return(
+    if(annonces.details) {
+      return(
         <>
       {/* Page content */}
       <Container className="mt--7" fluid>
@@ -111,7 +118,7 @@ const AnnonceDetail = () =>{
                 <h3 className="mb-0">Annonces</h3>
               </CardHeader>
               <CardBody>
-                <h4>idAnnonce : {idAnnonce}</h4>
+                <h4>Ref-Annonce : {idAnnonce}</h4>
                 <Row style={slideRowStyle}>
                   <Col lg="8" md="12">
                     <div style={containerStyles}>
@@ -123,7 +130,7 @@ const AnnonceDetail = () =>{
                       <Col lg="6" md="6">
                       
                       {annonces.details.dateAnnonce && <p>Date Annonce: </p>}
-                      {annonces.details.description && <p>Description: </p>}
+                      
                       {annonces.details.nom && <p>Nom: </p>}
                       {annonces.details.prenom && <p>Prénom: </p>}
                       {annonces.details.mail && <p>Mail: </p>}
@@ -132,7 +139,7 @@ const AnnonceDetail = () =>{
                       </Col>
                       <Col lg="6" md="6">
                       <p><span style={boldStyle}>{annonces.details.dateAnnonce}</span></p>
-                      <p><span style={boldStyle}>{annonces.details.description}</span></p>
+                      
                       <p><span style={boldStyle}>{annonces.details.nom}</span></p>
                       <p><span style={boldStyle}>{annonces.details.prenom}</span></p>
                       <p><span style={boldStyle}>{annonces.details.mail}</span></p>
@@ -163,10 +170,10 @@ const AnnonceDetail = () =>{
                     <Col lg="6" md="6">
                     <p><span style={boldStyle}>{annonces.details.nomModele}</span></p>
                     <p><span style={boldStyle}>{annonces.details.anneSortie}</span></p>
-                    <p><span style={boldStyle}>{annonces.details.etatVoiture}</span></p>
+                    <p><span style={boldStyle}>{annonces.details.etatVoiture} / 10 </span></p>
                     <p><span style={boldStyle}>{annonces.details.marque}</span></p>
                     <p><span style={boldStyle}>{annonces.details.categorie}</span></p>
-                    <p><span style={boldStyle}>{annonces.details.prixVente.toLocaleString('fr-FR')}</span></p>
+                    <p><span style={boldStyle}>{annonces.details.prixVente.toLocaleString('fr-FR')} Ar</span></p>
                     </Col>
                   </Row>
                   <h2>Apparence</h2>
@@ -178,7 +185,7 @@ const AnnonceDetail = () =>{
                         {annonces.details.nbPorte && <p>Nombre de Porte: </p>}
                       </Col>
                       <Col lg="6" md="6">
-                        <p><span style={boldStyle}>{annonces.details.poids.toLocaleString('fr-FR')}</span></p>
+                        <p><span style={boldStyle}>{annonces.details.poids.toLocaleString('fr-FR')} Kg</span></p>
                         <p><span style={boldStyle}>{annonces.details.nbPlace}</span></p>
                         <p><span style={boldStyle}>{annonces.details.nbPorte}</span></p>
                       </Col>
@@ -186,40 +193,44 @@ const AnnonceDetail = () =>{
                   </Col>
 
                   <Col lg="6" md="12">
-  <h2>Engine</h2>
-  <Row>
-    <Col lg="6" md="6">
-      {annonces.details.idAnnonce && <p>Carburant: </p>}
-      {annonces.details.kilometrage && <p>Kilométrage: </p>}
-      {/* {annonces.details.etat && <p>État: </p>} */}
-      {annonces.details.energie && <p>Énergie: </p>}
-      {annonces.details.boite && <p>Boîte: </p>}
-    </Col>
-    <Col lg="6" md="6">
-      <p><span style={boldStyle}>{annonces.details.idAnnonce}</span></p>
-      <p><span style={boldStyle}>{annonces.details.kilometrage.toLocaleString('fr-FR')}</span></p>
-      {/* <p><span style={boldStyle}>{annonces.details.etat}</span></p> */}
-      <p><span style={boldStyle}>{annonces.details.energie}</span></p>
-      <p><span style={boldStyle}>{annonces.details.boite}</span></p>
-    </Col>
-  </Row>
-  <Row>
-    <Col lg="6" md="6">
-      {annonces.details.moteur && <p>Moteur: </p>}
-      {annonces.details.litreMoteur && <p>Litre Moteur: </p>}
-      {annonces.details.consommation && <p>Consommation: </p>}
-      {annonces.details.puissance && <p>Puissance: </p>}
-      {annonces.details.nbVitesse && <p>Nombre de Vitesse: </p>}
-    </Col>
-    <Col lg="6" md="6">
-      <p><span style={boldStyle}>{annonces.details.moteur}</span></p>
-      <p><span style={boldStyle}>{annonces.details.litreMoteur}</span></p>
-      <p><span style={boldStyle}>{annonces.details.consommation}</span></p>
-      <p><span style={boldStyle}>{annonces.details.puissance}</span></p>
-      <p><span style={boldStyle}>{annonces.details.nbVitesse}</span></p>
-    </Col>
-  </Row>
-</Col>
+                    <h2>Engine</h2>
+                    <Row>
+                      <Col lg="6" md="6">
+                        
+                        {annonces.details.kilometrage && <p>Kilométrage: </p>}
+                        {/* {annonces.details.etat && <p>État: </p>} */}
+                        {annonces.details.energie && <p>Énergie: </p>}
+                        {annonces.details.boite && <p>Boîte: </p>}
+                      </Col>
+                      <Col lg="6" md="6">
+                       
+                        <p><span style={boldStyle}>{annonces.details.kilometrage.toLocaleString('fr-FR')} Km</span></p>
+                        {/* <p><span style={boldStyle}>{annonces.details.etat}</span></p> */}
+                        <p><span style={boldStyle}>{annonces.details.energie}</span></p>
+                        <p><span style={boldStyle}>{annonces.details.boite}</span></p>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col lg="6" md="6">
+                        {annonces.details.moteur && <p>Moteur: </p>}
+                        {annonces.details.litreMoteur && <p>Litre Moteur: </p>}
+                        {annonces.details.consommation && <p>Consommation: </p>}
+                        {annonces.details.puissance && <p>Puissance: </p>}
+                        {annonces.details.nbVitesse && <p>Nombre de Vitesse: </p>}
+                      </Col>
+                      <Col lg="6" md="6">
+                        <p><span style={boldStyle}>{annonces.details.moteur}</span></p>
+                        <p><span style={boldStyle}>{annonces.details.litreMoteur} L</span></p>
+                        <p><span style={boldStyle}>{annonces.details.consommation} {getUnite(annonces.details.energie)} </span></p>
+                        <p><span style={boldStyle}>{annonces.details.puissance} CV</span></p>
+                        <p><span style={boldStyle}>{annonces.details.nbVitesse}</span></p>
+                      </Col>
+                    </Row>
+                  </Col>
+                  <Col>
+                    <h2>Description</h2>
+                    <p>{annonces.details.description}</p>
+                  </Col>
 
                   </Row>
               </CardBody>
@@ -229,7 +240,23 @@ const AnnonceDetail = () =>{
       </Container>
            
         </>
-    )
+     )
+    } else {
+      return (
+        <>
+          <Container>
+            <Row>
+              <Col>
+                <p>Retourner sur la liste</p>
+              </Col>
+            </Row>
+          </Container>
+        </>
+      )
+    }
+      
+
+    
 }
 
 export default AnnonceDetail;

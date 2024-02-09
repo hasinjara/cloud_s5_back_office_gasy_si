@@ -18,15 +18,35 @@ import {
 } from "reactstrap";
 import { AuthProvider, useAuth } from "AuthContext"; 
 import {useNavigate} from 'react-router-dom';
+import { useState } from "react";
 
 const AdminNavbar = (props) => {
   const { logout } = useAuth();
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({ search: '' });
   const handleLougout =() =>
   {
     logout();
     navigate('index');
   }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Perform form submission logic
+
+    // Convert object to a string
+    const encodedData = encodeURIComponent(JSON.stringify(formData));
+
+    // After submitting, navigate to Page2 with URL parameters
+    navigate(`/admin/search?data=${encodedData}`);
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
   return (
     <>
       <Navbar className="navbar-top navbar-dark" expand="md" id="navbar-main">
@@ -37,7 +57,7 @@ const AdminNavbar = (props) => {
           >
             {props.brandText}
           </Link>
-          <Form className="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+          <Form onSubmit={handleSubmit} className="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
             <FormGroup className="mb-0">
               <InputGroup className="input-group-alternative">
                 <InputGroupAddon addonType="prepend">
@@ -45,7 +65,13 @@ const AdminNavbar = (props) => {
                     <i className="fas fa-search" />
                   </InputGroupText>
                 </InputGroupAddon>
-                <Input placeholder="Search" type="text" />
+                <Input
+                  placeholder="Search"
+                  type="text"
+                  name="search"
+                  value={formData.search}
+                  onChange={handleChange}
+                />
               </InputGroup>
             </FormGroup>
           </Form>

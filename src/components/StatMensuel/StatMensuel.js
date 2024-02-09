@@ -103,6 +103,9 @@ const StatMensuel = () => {
         display: true,
         text: text,
       },
+      legend: {
+        display: true //This will do the task
+      }
     };
   };
 

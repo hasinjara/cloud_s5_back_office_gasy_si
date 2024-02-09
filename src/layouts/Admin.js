@@ -11,6 +11,14 @@ import Sidebar from "components/Sidebar/Sidebar.js";
 import routes from "routes.js";
 import Header from "components/Headers/Header";
 
+const RefreshOnMount = () => {
+  React.useEffect(() => {
+    window.location.reload();
+  }, []);
+
+  return null;
+};
+
 const Admin = (props) => {
   const mainContent = React.useRef(null);
   const location = useLocation();
