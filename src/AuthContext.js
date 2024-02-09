@@ -7,7 +7,7 @@ export const AuthProvider = ({ children }) => {
     const [userInfo, setUserInfo] = useState(localStorage.getItem('userInfo') || null);
 
     useEffect(() => {
-        setUrl("https://devvoitures5backend-production-a786.up.railway.app/");
+        setUrl("https://devvoitures5backend-production-3fed.up.railway.app/");
     }, []);
 
     const InitializeToken = (token) => {
